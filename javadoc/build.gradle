@@ -1,0 +1,9 @@
+plugins {
+    id "java"
+}
+
+javadoc {
+    options {
+        stylesheetFile = file("stylesheet.css")
+    }
+}

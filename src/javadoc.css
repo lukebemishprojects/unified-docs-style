@@ -1,0 +1,194 @@
+@import "tailwindcss";
+
+@theme {
+    --color-page-foreground: var(--color-black);
+
+    --color-page-background: var(--color-white);
+    --color-table-even: var(--color-page-background);
+    --color-table-odd: var(--color-zinc-100);
+    --color-table-border: var(--color-zinc-300);
+
+    --color-foreground-disabled: var(--color-zinc-500);
+}
+
+@utility icon {
+    content: "";
+    display: inline-block;
+    background-size:100% 100%;
+    background-color: currentColor;
+}
+
+@utility icon-external-link {
+    @apply icon;
+
+    /* Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc. */
+    /* (CC BY 4.0) */
+    mask-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M290.4 19.8C295.4 7.8 307.1 0 320 0L480 0c17.7 0 32 14.3 32 32l0 160c0 12.9-7.8 24.6-19.8 29.6s-25.7 2.2-34.9-6.9L400 157.3 246.6 310.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L354.7 112 297.4 54.6c-9.2-9.2-11.9-22.9-6.9-34.9zM0 176c0-44.2 35.8-80 80-80l80 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-80 0c-8.8 0-16 7.2-16 16l0 256c0 8.8 7.2 16 16 16l256 0c8.8 0 16-7.2 16-16l0-80c0-17.7 14.3-32 32-32s32 14.3 32 32l0 80c0 44.2-35.8 80-80 80L80 512c-44.2 0-80-35.8-80-80L0 176z"/></svg>');
+}
+
+@utility icon-caution {
+    @apply icon;
+
+    /* GitHub octicons: https://github.com/primer/octicons/blob/main/LICENSE */
+    /* (MIT) */
+    mask-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></svg>');
+}
+
+nav {
+    /* TODO */
+    @apply hidden
+}
+
+nav .toc {
+    /* TODO */
+    @apply hidden
+}
+
+.main-grid {
+    @apply flex flex-row;
+    @apply text-page-foreground bg-page-background;
+    main {
+        @apply max-w-[85ch] min-w-[min(100dvw,85ch)] px-4 py-12 mx-auto
+    }
+
+    a {
+        @apply text-blue-800
+    }
+    a[href*="://"]::after {
+        @apply icon-external-link size-2 mb-1
+    }
+
+    h1, .title {
+        @apply text-3xl font-bold mb-[0.5em] px-2
+    }
+    h2, .subtitle {
+        @apply text-2xl font-bold italic mt-[0.5em] px-2
+    }
+    h3 {
+        @apply text-lg font-bold mt-[0.5em] px-2
+    }
+    hr {
+        @apply my-[0.5em]
+    }
+    code {
+        @apply font-mono
+    }
+    strong, b, .bold, .deprecated-label {
+        @apply font-bold
+    }
+    em, i, cite, .italic {
+        @apply italic
+    }
+    ins, u {
+        @apply underline
+    }
+    del {
+        @apply line-through
+    }
+
+    blockquote, .deprecation-block {
+        @apply mx-2 px-3 mb-[0.5em] border-l-3
+    }
+
+    .deprecation-block {
+        .deprecated-label::before {
+            @apply icon-caution size-[1.5cap] mr-[0.3em] inline-block align-[-0.25cap]
+        }
+        @apply text-red-700
+    }
+
+    .type-signature {
+        @apply whitespace-pre-wrap font-mono mb-[1em] px-2
+    }
+    .type-name-label {
+        @apply font-bold
+    }
+    .anchor-link {
+        /* TODO */
+        @apply hidden
+    }
+
+    .block:not(.summary-table .block) {
+        @apply px-2
+    }
+
+    dl.notes {
+        dt {
+            @apply font-bold
+        }
+        dd {
+            @apply ml-4
+        }
+        @apply px-2 mt-[0.5em]
+    }
+
+    .caption, .inherited-list > h3 {
+        @apply text-base px-2 py-1 font-normal w-fit mt-[0.5em] bg-table-odd border-b-3 border-table-border
+        
+    }
+    .summary-table {
+        > * {
+            @apply py-1 px-2 outline outline-table-border
+        }
+    }
+    table {
+        th, td {
+            @apply py-1 px-2 outline outline-offset-[-0.03125rem] outline-table-border
+        }
+        @apply -mx-2
+    }
+    .summary-table, table {
+        @apply mb-[1em];
+        .table-header, th {
+            @apply bg-table-odd font-bold
+        }
+        .even-row-color, tbody tr:nth-child(odd) {
+            @apply bg-table-even
+        }
+        .odd-row-color, thead tr, tbody tr:nth-child(even) {
+            @apply bg-table-odd
+        }
+        &.two-column-summary {
+            @apply grid grid-cols-[auto_1fr]
+        }
+        &.three-column-summary {
+            @apply grid grid-cols-[auto_auto_1fr]
+        }
+        &.three-column-release-summary {
+            @apply grid grid-cols-[1fr_auto_1fr]
+        }
+        &.four-column-summary {
+            @apply grid grid-cols-[auto_auto_auto_1fr]
+        }
+    }
+    .table-tabs {
+        .table-tab, .active-table-tab {
+            @apply py-1 px-2
+        }
+        .table-tab {
+            @apply text-foreground-disabled border-b-3 border-page-background
+        }
+        .active-table-tab {
+            @apply bg-table-odd border-b-3 border-table-border
+        }
+        @apply flex flex-row gap-2
+    }
+
+    .inherited-list {
+        @apply mb-[1em] grid grid-cols-1;
+        >:not(h3) {
+            @apply py-1 px-2 bg-table-odd block outline outline-table-border
+        }
+    }
+
+    .member-signature {
+        @apply font-mono mb-[0.5em] px-2
+    }
+
+    main > .inheritance {
+        @apply overflow-x-auto px-2
+    }
+    .inheritance .inheritance {
+        @apply ml-8
+    }
+}
