@@ -149,7 +149,7 @@ nav .toc {
         th, td {
             @apply py-1 px-2 outline outline-offset-[-0.03125rem] outline-table-border
         }
-        @apply -mx-2
+        @apply -mx-2 mt-2
     }
     .summary-table, table {
         .table-header, th {
