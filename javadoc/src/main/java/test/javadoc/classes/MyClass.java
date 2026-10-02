@@ -6,7 +6,10 @@ public class MyClass {
     public MyClass() {}
 
     /// There's a nested class!
-    public static class SomeInnerClass {}
+    public sealed interface SomeInnerClass permits SomeInnerImpl {}
+
+    /// A nested record!
+    public record SomeInnerImpl(int foo, String bar) implements SomeInnerClass {}
 
     /// A static field
     public static final int FOO = 1;
@@ -36,7 +39,14 @@ public class MyClass {
     @Deprecated
     public native Object baz();
 
-    /// A static method
+    /// A static method. Has snippets!
+    /// {@snippet :
+    /// public static void main(String... args) {
+    ///     System.out.println("Hello, World!"); // @highlight regex='".*"'
+    ///     System.out.println("Hello, World!"); // @highlight regex='".*"' type=italic
+    ///     System.out.println("Hello, World!"); // @highlight regex='".*"' type=highlighted
+    /// }
+    /// }
     /// @return that returns something
     public static int someStaticMethod() { return 0; }
 }

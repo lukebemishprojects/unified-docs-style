@@ -77,7 +77,7 @@ nav .toc {
     hr {
         @apply mt-2
     }
-    .member-list > li:not(:last-child)::after {
+    .member-list > li:not(:last-child)::after, .details-list > li:not(:last-child) .member-list > li:last-child::after {
         content: "";
         @apply mt-2 border-t w-full block
     }
@@ -97,6 +97,9 @@ nav .toc {
     del {
         @apply line-through
     }
+    .highlighted {
+        @apply bg-lime-300
+    }
 
     blockquote, .deprecation-block {
         &:not(.block > &, p > &) {
@@ -112,7 +115,7 @@ nav .toc {
         @apply text-red-700
     }
 
-    .type-signature {
+    .type-signature, .package-signature, .module-signature, .member-signature {
         @apply whitespace-pre-wrap font-mono mt-2 px-2
     }
     .type-name-label {
@@ -123,10 +126,29 @@ nav .toc {
         @apply hidden
     }
 
+    .snippet-container {
+        .snippet-copy {
+            :last-child {
+                @apply size-[1.5cap] ml-[0.3em] inline-block align-[-0.25cap] my-auto
+            }
+            :first-child {
+                @apply transition-opacity duration-200 ease-in-out opacity-0
+            }
+            &:hover :first-child {
+                @apply opacity-100
+            }
+            @apply absolute top-0 right-0 flex flex-row p-2
+        }
+        .snippet {
+            @apply bg-table-odd p-2 overflow-x-auto
+        }
+        @apply outline outline-table-border relative
+    }
+
     .block:not(.summary-table .block) {
         @apply px-2 mt-2
     }
-    .block p:not(:nth-child(1)) {
+    .block:not(.summary-table .block) > *:not(:first-child) {
         @apply mt-2
     }
 
@@ -152,7 +174,7 @@ nav .toc {
         th, td {
             @apply py-1 px-2 outline outline-offset-[-0.03125rem] outline-table-border
         }
-        @apply -mx-2 mt-2
+        @apply -mx-2
     }
     .summary-table, table {
         .table-header, th {
@@ -198,10 +220,6 @@ nav .toc {
         > h3 {
             @apply mt-0
         }
-    }
-
-    .member-signature {
-        @apply font-mono mt-2 px-2
     }
 
     main > .inheritance {
