@@ -22,13 +22,16 @@ public class MyClass {
     /// | field 1 | something      |
     /// | field 2 | something else |
     ///
+    /// And also a block quote because why not:
+    /// > Block quote here!
+    ///
     /// @param a some param
     /// @param <A> some type param
     /// @throws IllegalStateException if illegal state occurs
     public final <A> void bar(A a) throws IllegalStateException {}
 
     /// A method without an implementation
-    /// @return that returns a {@link Object}
+    /// @return an {@link Object}
     /// @deprecated Do not use.
     @Deprecated
     public native Object baz();

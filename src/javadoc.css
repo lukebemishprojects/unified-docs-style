@@ -11,6 +11,12 @@
     --color-foreground-disabled: var(--color-zinc-500);
 }
 
+@layer base {
+    :root {
+        font-size: 18px;
+    }
+}
+
 @utility icon {
     content: "";
     display: inline-block;
@@ -59,16 +65,16 @@ nav .toc {
     }
 
     h1, .title {
-        @apply text-3xl font-bold mb-[0.5em] px-2
+        @apply text-3xl font-bold px-2
     }
     h2, .subtitle {
-        @apply text-2xl font-bold italic mt-[0.5em] px-2
+        @apply text-2xl font-bold italic mt-2 px-2
     }
     h3 {
-        @apply text-lg font-bold mt-[0.5em] px-2
+        @apply text-lg font-bold mt-2 px-2
     }
     hr {
-        @apply my-[0.5em]
+        @apply mt-2
     }
     code {
         @apply font-mono
@@ -87,7 +93,7 @@ nav .toc {
     }
 
     blockquote, .deprecation-block {
-        @apply mx-2 px-3 mb-[0.5em] border-l-3
+        @apply mx-2 px-3 mt-2 border-l-3
     }
 
     .deprecation-block {
@@ -98,7 +104,7 @@ nav .toc {
     }
 
     .type-signature {
-        @apply whitespace-pre-wrap font-mono mb-[1em] px-2
+        @apply whitespace-pre-wrap font-mono mt-2 px-2
     }
     .type-name-label {
         @apply font-bold
@@ -109,7 +115,10 @@ nav .toc {
     }
 
     .block:not(.summary-table .block) {
-        @apply px-2
+        @apply px-2 mt-2
+    }
+    .block p:not(:nth-child(1)) {
+        @apply mt-2
     }
 
     dl.notes {
@@ -119,12 +128,11 @@ nav .toc {
         dd {
             @apply ml-4
         }
-        @apply px-2 mt-[0.5em]
+        @apply px-2 mt-2
     }
 
     .caption, .inherited-list > h3 {
-        @apply text-base px-2 py-1 font-normal w-fit mt-[0.5em] bg-table-odd border-b-3 border-table-border
-        
+        @apply text-base px-2 py-1 font-normal w-fit mt-2 bg-table-odd border-b-3 border-table-border
     }
     .summary-table {
         > * {
@@ -138,7 +146,6 @@ nav .toc {
         @apply -mx-2
     }
     .summary-table, table {
-        @apply mb-[1em];
         .table-header, th {
             @apply bg-table-odd font-bold
         }
@@ -171,22 +178,25 @@ nav .toc {
         .active-table-tab {
             @apply bg-table-odd border-b-3 border-table-border
         }
-        @apply flex flex-row gap-2
+        @apply flex flex-row gap-2 mt-2
     }
 
     .inherited-list {
-        @apply mb-[1em] grid grid-cols-1;
+        @apply mt-[1em] grid grid-cols-1;
         >:not(h3) {
             @apply py-1 px-2 bg-table-odd block outline outline-table-border
+        }
+        > h3 {
+            @apply mt-0
         }
     }
 
     .member-signature {
-        @apply font-mono mb-[0.5em] px-2
+        @apply font-mono mt-2 px-2
     }
 
     main > .inheritance {
-        @apply overflow-x-auto px-2
+        @apply overflow-x-auto px-2 mt-2
     }
     .inheritance .inheritance {
         @apply ml-8
