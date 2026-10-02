@@ -99,7 +99,10 @@ nav .toc {
     }
 
     blockquote, .deprecation-block {
-        @apply mx-2 px-3 mt-2 border-l-3
+        &:not(.block > &, p > &) {
+            @apply ml-2
+        }
+        @apply px-3 mt-2 border-l-3
     }
 
     .deprecation-block {
