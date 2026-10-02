@@ -68,14 +68,20 @@ nav .toc {
         @apply text-3xl font-bold px-2
     }
     h2, .subtitle {
-        @apply text-2xl font-bold italic mt-2 px-2
+        @apply text-2xl font-bold italic mt-4 px-2
     }
     h3 {
         @apply text-lg font-bold mt-2 px-2
     }
+
     hr {
         @apply mt-2
     }
+    .member-list > li:not(:last-child)::after {
+        content: "";
+        @apply mt-2 border-t w-full block
+    }
+
     code {
         @apply font-mono
     }
