@@ -58,6 +58,7 @@ public class MyClass {
     ///     System.out.println("Hello, World!"); // @highlight regex='".*"' type=highlighted
     /// }
     /// }
+    /// There can also be plain inline {@code code}.
     /// @return that returns something
     public static int someStaticMethod() { return 0; }
 }

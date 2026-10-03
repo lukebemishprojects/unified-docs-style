@@ -26,6 +26,7 @@
     display: inline-block;
     background-size:100% 100%;
     background-color: currentColor;
+    print-color-adjust: exact;
 }
 
 @utility inline-icon {
@@ -180,6 +181,9 @@ p:has(+ #page-search-link) {
     &:hover > *:not(img) {
         @apply opacity-100
     }
+    @media print {
+        @apply hidden
+    }
 }
 
 .ui-menu {
@@ -218,7 +222,10 @@ p:has(+ #page-search-link) {
         @apply text-foreground-link
     }
     a[href*="://"]::after {
-        @apply icon-external-link size-2 mb-1
+        @apply icon-external-link size-2 mb-1;
+        @media print {
+            @apply hidden
+        }
     }
 
     h1 {
@@ -258,6 +265,7 @@ p:has(+ #page-search-link) {
         @apply font-mono outline outline-page-foreground bg-table-border px-[0.25em] rounded-[0.25em]
     }
     .highlighted {
+        print-color-adjust: exact;
         @apply bg-lime-300
     }
 
@@ -301,7 +309,10 @@ p:has(+ #page-search-link) {
 
     .snippet-container {
         .snippet-copy {
-            @apply absolute top-0 right-0 flex flex-row p-2
+            @apply absolute top-0 right-0 flex flex-row p-2;
+            @media print {
+                @apply hidden
+            }
         }
         .snippet {
             @apply bg-table-odd p-2 overflow-x-auto
@@ -320,6 +331,9 @@ p:has(+ #page-search-link) {
         }
         ol {
             @apply list-decimal
+        }
+        code:not(.snippet code) {
+            @apply bg-table-odd outline outline-table-border px-[0.25em] rounded-[0.25em]
         }
         @apply mt-2
     }
