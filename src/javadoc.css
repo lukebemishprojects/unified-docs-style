@@ -341,6 +341,12 @@ p:has(+ #page-search-link) {
         @apply mt-2
     }
 
+    .hierarchy {
+        li li {
+            @apply ml-8
+        }
+    }
+
     dl {
         &.notes dt {
             @apply font-bold
