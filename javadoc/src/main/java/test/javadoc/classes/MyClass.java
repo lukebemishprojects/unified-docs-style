@@ -28,6 +28,17 @@ public class MyClass {
     /// And also a block quote because why not:
     /// > Block quote here!
     ///
+    /// ...And a list.
+    ///
+    ///  * A
+    ///  * B
+    ///      * C
+    ///
+    ///  1. A
+    ///  2. B
+    ///  3. C
+    ///      1. D
+    ///
     /// @param a some param
     /// @param <A> some type param
     /// @throws IllegalStateException if illegal state occurs

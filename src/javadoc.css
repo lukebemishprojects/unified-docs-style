@@ -310,11 +310,16 @@ p:has(+ #page-search-link) {
     }
 
     :where(.block, .help-section):not(.summary-table .block) {
-        ul {
+        ul, ol {
             li {
                 @apply ml-8
             }
+        }
+        ul {
             @apply list-disc
+        }
+        ol {
+            @apply list-decimal
         }
         @apply mt-2
     }
