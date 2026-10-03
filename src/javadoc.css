@@ -321,6 +321,13 @@ p:has(+ #page-search-link) {
     }
 
     :where(.block, .help-section):not(.summary-table .block) {
+        @apply mt-2
+    }
+    :where(.block, .help-section):not(.summary-table .block) > *:not(:first-child) {
+        @apply mt-2
+    }
+
+    .block {
         ul, ol {
             li {
                 @apply ml-8
@@ -332,13 +339,11 @@ p:has(+ #page-search-link) {
         ol {
             @apply list-decimal
         }
+    }
+    .member-list, .block {
         code:not(.snippet code) {
             @apply bg-table-odd outline outline-table-border px-[0.25em] rounded-[0.25em]
         }
-        @apply mt-2
-    }
-    :where(.block, .help-section):not(.summary-table .block) > *:not(:first-child) {
-        @apply mt-2
     }
 
     .hierarchy {
