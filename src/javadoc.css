@@ -9,11 +9,15 @@
     --color-table-border: var(--color-zinc-300);
 
     --color-foreground-disabled: var(--color-zinc-500);
+    --color-foreground-link: var(--color-blue-800)
 }
 
 @layer base {
     :root {
         font-size: 18px;
+        @media print {
+            font-size: 12px;
+        }
     }
 }
 
@@ -24,62 +28,215 @@
     background-color: currentColor;
 }
 
+@utility inline-icon {
+    @apply size-[1.5cap] mr-[0.3em] inline-block align-[-0.25cap]
+}
+
+/* GitHub octicons: https://github.com/primer/octicons/blob/main/LICENSE */
+/* (MIT) */
 @utility icon-external-link {
     @apply icon;
-
-    /* Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc. */
-    /* (CC BY 4.0) */
-    mask-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M290.4 19.8C295.4 7.8 307.1 0 320 0L480 0c17.7 0 32 14.3 32 32l0 160c0 12.9-7.8 24.6-19.8 29.6s-25.7 2.2-34.9-6.9L400 157.3 246.6 310.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L354.7 112 297.4 54.6c-9.2-9.2-11.9-22.9-6.9-34.9zM0 176c0-44.2 35.8-80 80-80l80 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-80 0c-8.8 0-16 7.2-16 16l0 256c0 8.8 7.2 16 16 16l256 0c8.8 0 16-7.2 16-16l0-80c0-17.7 14.3-32 32-32s32 14.3 32 32l0 80c0 44.2-35.8 80-80 80L80 512c-44.2 0-80-35.8-80-80L0 176z"/></svg>');
+    mask-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"/></svg>');
 }
 
 @utility icon-caution {
     @apply icon;
-
-    /* GitHub octicons: https://github.com/primer/octicons/blob/main/LICENSE */
-    /* (MIT) */
     mask-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></svg>');
 }
 
-nav {
-    /* TODO */
-    @apply hidden
+@utility icon-triangle-right {
+    @apply icon;
+    mask-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m6.427 4.427 3.396 3.396a.25.25 0 0 1 0 .354l-3.396 3.396A.25.25 0 0 1 6 11.396V4.604a.25.25 0 0 1 .427-.177Z"/></svg>')
 }
 
-nav .toc {
-    /* TODO */
-    @apply hidden
+@utility icon-anchor-link {
+    @apply icon;
+    mask-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"/></svg>')
+}
+
+
+@utility icon-x {
+    @apply icon;
+    mask-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"/></svg>')
+}
+
+nav {
+    @media print {
+        @apply hidden
+    }
+    &:has(.top-nav) {
+        .toc {
+            @apply hidden
+        }
+        .skip-nav {
+            @apply hidden
+        }
+        .nav-menu-button {
+            @apply hidden
+        }
+        .nav-bar-cell1-rev, .nav-list > *:hover {
+            @apply text-foreground-link
+        }
+        .top-nav::after, .sub-nav .sub-nav-list:not(:empty)::after {
+            content: "";
+            @apply w-full h-0 border-t border-page-foreground block my-2
+        }
+        .sub-nav {
+            .sub-nav-list {
+                & > *:not(:first-child) {
+                    &::before {
+                        @apply icon-triangle-right inline-icon
+                    }
+                    @apply ml-2
+                }
+            }
+            .nav-list-search {
+                > *:first-child {
+                    @apply w-full outline outline-table-border px-1
+                }
+                > *:last-child {
+                    @apply absolute right-0 icon-x inline-icon top-[calc((1lh-1.5cap)/2)] invisible
+                }
+                @apply relative
+            }
+        }
+        @apply fixed left-[max((100%-85rch)/2-30ch-1rem,0px)] top-12 w-[30ch] text-sm text-foreground-disabled
+    }
+    &.toc {
+        .hide-sidebar, .show-sidebar {
+            @apply hidden
+        }
+        .toc-header {
+            > *:first-child {
+                @apply outline outline-table-border px-1 inline-block min-w-[20ch] flex-1
+            }
+            > *:last-child {
+                @apply absolute right-0 icon-x inline-icon top-[calc((1lh-1.5cap)/2)] invisible
+            }
+            @apply relative flex flex-row w-full border-b border-page-foreground mb-2 pb-2
+        }
+        .toc-list {
+            a {
+                @apply text-foreground-disabled
+            }
+            .current-selection {
+                @apply text-foreground-link
+            }
+            .toc-list {
+                @apply pl-4
+            }
+        }
+        @apply fixed right-[max((100%-85rch)/2-30ch-1rem,0px)] top-12 w-[30ch] text-sm text-foreground-disabled
+    }
+}
+
+div:has(> #page-search-input) {
+    #page-search-reset {
+        @apply icon-x inline-icon top-[calc((1lh-1.5cap)/2)] invisible ml-[calc(-1.5cap-0.3em)] mr-4
+    }
+    .page-search-details {
+        summary {
+            @apply w-fit
+        }
+        @apply w-fit inline-block
+    }
+    #page-search-input {
+        @apply outline outline-table-border w-[min(100%,30ch)] px-1
+    }
+    > *:not(:last-child, #page-search-input, #page-search-reset) {
+        @apply mr-4
+    }
+}
+
+.page-search-info {
+    p, #page-search-link {
+        &:not(:first-child) {
+            @apply mt-2
+        }
+    }
+    
+    @apply hidden bg-table-odd border border-table-border p-2 mt-2
+}
+
+#page-search-notify {
+    @apply mt-2
+}
+
+p:has(+ #page-search-link) {
+    @apply mb-2
+}
+
+#page-search-link {
+    @apply underline
+}
+
+.copy {
+    > img {
+        @apply size-[1.5cap] mx-[0.3em] inline-block align-[-0.25cap] my-auto
+    }
+    > *:not(img) {
+        @apply transition-opacity duration-200 ease-in-out opacity-0
+    }
+    &:hover > *:not(img) {
+        @apply opacity-100
+    }
+}
+
+.ui-menu {
+    > *:nth-child(odd) {
+        @apply bg-table-odd
+    }
+    > *:nth-child(even) {
+        @apply bg-table-even
+    }
+    > * {
+        @apply px-2 py-[0.2em]
+    }
+    .ui-menu-item-wrapper {
+        @apply p-0 grid grid-cols-[0.5fr_1fr]
+    }
+    .ui-state-focus, .ui-state-active {
+        @apply m-0 text-foreground-link
+    }
+    > *:not(.result-item) {
+        @apply font-bold
+    }
+    @apply border border-table-border
 }
 
 .main-grid {
     @apply flex flex-row;
     @apply text-page-foreground bg-page-background;
     main {
-        @apply max-w-[85ch] min-w-[min(100dvw,85ch)] px-4 py-12 mx-auto
+        @apply max-w-[85rch] min-w-[min(100dvw,85rch)] px-4 py-12 mx-auto;
+        @media print {
+            @apply max-w-full mx-0 w-full
+        }
     }
 
     a {
-        @apply text-blue-800
+        @apply text-foreground-link
     }
     a[href*="://"]::after {
         @apply icon-external-link size-2 mb-1
     }
 
-    h1, .title {
-        @apply text-3xl font-bold px-2
+    h1 {
+        @apply text-3xl font-bold
     }
-    h2, .subtitle {
-        @apply text-2xl font-bold italic mt-4 px-2
+    h2 {
+        @apply text-2xl font-bold italic mt-5
     }
     h3 {
-        @apply text-lg font-bold mt-2 px-2
+        @apply text-lg font-bold mt-4
     }
 
     hr {
-        @apply mt-2
+        @apply mt-2 -mx-2
     }
     .member-list > li:not(:last-child)::after, .details-list > li:not(:last-child) .member-list > li:last-child::after {
         content: "";
-        @apply mt-2 border-t w-full block
+        @apply mt-2 -mx-2 border-t w-full block
     }
 
     code {
@@ -97,46 +254,53 @@ nav .toc {
     del {
         @apply line-through
     }
+    kbd {
+        @apply font-mono outline outline-page-foreground bg-table-border px-[0.25em] rounded-[0.25em]
+    }
     .highlighted {
         @apply bg-lime-300
     }
 
+    .vertical-separator {
+        @apply px-[0.125em]
+    }
+
     blockquote, .deprecation-block {
-        &:not(.block > &, p > &) {
-            @apply ml-2
-        }
         @apply px-3 mt-2 border-l-3
+    }
+
+    .index:last-of-type {
+        @apply mb-8
     }
 
     .deprecation-block {
         .deprecated-label::before {
-            @apply icon-caution size-[1.5cap] mr-[0.3em] inline-block align-[-0.25cap]
+            @apply icon-caution inline-icon
         }
         @apply text-red-700
     }
 
     .type-signature, .package-signature, .module-signature, .member-signature {
-        @apply whitespace-pre-wrap font-mono mt-2 px-2
+        @apply whitespace-pre-wrap font-mono mt-2
     }
     .type-name-label {
         @apply font-bold
     }
     .anchor-link {
-        /* TODO */
-        @apply hidden
+        :hover > & {
+            @apply visible
+        }
+        @apply inline-icon icon-anchor-link text-current invisible
+    }
+    .contents-list > * {
+        @apply mt-2
+    }
+    hr:has(+ .help-footnote), .sub-title h2 {
+        @apply mb-2
     }
 
     .snippet-container {
         .snippet-copy {
-            :last-child {
-                @apply size-[1.5cap] ml-[0.3em] inline-block align-[-0.25cap] my-auto
-            }
-            :first-child {
-                @apply transition-opacity duration-200 ease-in-out opacity-0
-            }
-            &:hover :first-child {
-                @apply opacity-100
-            }
             @apply absolute top-0 right-0 flex flex-row p-2
         }
         .snippet {
@@ -145,30 +309,40 @@ nav .toc {
         @apply outline outline-table-border relative
     }
 
-    .block:not(.summary-table .block) {
-        @apply px-2 mt-2
+    :where(.block, .help-section):not(.summary-table .block) {
+        ul {
+            li {
+                @apply ml-8
+            }
+            @apply list-disc
+        }
+        @apply mt-2
     }
-    .block:not(.summary-table .block) > *:not(:first-child) {
+    :where(.block, .help-section):not(.summary-table .block) > *:not(:first-child) {
         @apply mt-2
     }
 
-    dl.notes {
-        dt {
+    dl {
+        &.notes dt {
             @apply font-bold
         }
         dd {
             @apply ml-4
         }
-        @apply px-2 mt-2
+        @apply mt-2
     }
 
     .caption, .inherited-list > h3 {
         @apply text-base px-2 py-1 font-normal w-fit mt-2 bg-table-odd border-b-3 border-table-border
     }
-    .summary-table {
+    .caption {
+        @apply -mx-2 
+    }
+    .summary-table, .result-table {
         > * {
             @apply py-1 px-2 outline outline-table-border
         }
+        @apply -mx-2 
     }
     table {
         th, td {
@@ -176,14 +350,20 @@ nav .toc {
         }
         @apply -mx-2
     }
-    .summary-table, table {
+    .summary-table, .result-table, table {
+        .search-result-link {
+            &.selected {
+                @apply text-foreground-link
+            }
+            @apply text-page-foreground grid grid-cols-[0.5fr_1fr]
+        }
         .table-header, th {
             @apply bg-table-odd font-bold
         }
-        .even-row-color, tbody tr:nth-child(odd) {
+        .even-row-color, tbody tr:nth-child(odd), .search-result-link:nth-child(even) {
             @apply bg-table-even
         }
-        .odd-row-color, thead tr, tbody tr:nth-child(even) {
+        .odd-row-color, thead tr, tbody tr:nth-child(even), .search-result-link:nth-child(odd) {
             @apply bg-table-odd
         }
         &.two-column-summary {
@@ -198,22 +378,25 @@ nav .toc {
         &.four-column-summary {
             @apply grid grid-cols-[auto_auto_auto_1fr]
         }
+        &.result-table {
+            @apply grid grid-cols-1
+        }
     }
     .table-tabs {
-        .table-tab, .active-table-tab {
+        .table-tab, .page-search-header, .active-table-tab {
             @apply py-1 px-2
         }
-        .table-tab {
+        .table-tab, .page-search-header:not(:only-child) {
             @apply text-foreground-disabled border-b-3 border-page-background
         }
-        .active-table-tab {
+        .active-table-tab, .page-search-header:only-child {
             @apply bg-table-odd border-b-3 border-table-border
         }
-        @apply flex flex-row gap-2 mt-2
+        @apply flex flex-row gap-2 -mx-2 mt-2
     }
 
     .inherited-list {
-        @apply mt-[1em] grid grid-cols-1;
+        @apply -mx-2 mt-2 grid grid-cols-1;
         >:not(h3) {
             @apply py-1 px-2 bg-table-odd block outline outline-table-border
         }
@@ -223,7 +406,7 @@ nav .toc {
     }
 
     main > .inheritance {
-        @apply overflow-x-auto px-2 mt-2
+        @apply overflow-x-auto mt-2
     }
     .inheritance .inheritance {
         @apply ml-8
