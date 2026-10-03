@@ -1,6 +1,7 @@
 package test.javadoc.classes;
 
 /// A class with javadoc
+/// @since 1.0.0
 public class MyClass {
     /// Some constructor for this class
     public MyClass() {}
@@ -9,6 +10,7 @@ public class MyClass {
     public sealed interface SomeInnerClass permits SomeInnerImpl {}
 
     /// A nested record!
+    /// @since 1.0.1
     public record SomeInnerImpl(int foo, String bar) implements SomeInnerClass {}
 
     /// A static field
@@ -42,6 +44,7 @@ public class MyClass {
     /// @param a some param
     /// @param <A> some type param
     /// @throws IllegalStateException if illegal state occurs
+    /// @since 1.0.2
     public final <A> void bar(A a) throws IllegalStateException {}
 
     /// A method without an implementation
@@ -60,5 +63,6 @@ public class MyClass {
     /// }
     /// There can also be plain inline {@code code}.
     /// @return that returns something
+    /// @since 1.0.2
     public static int someStaticMethod() { return 0; }
 }

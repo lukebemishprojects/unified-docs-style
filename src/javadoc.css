@@ -300,7 +300,7 @@ p:has(+ #page-search-link) {
         }
         @apply inline-icon icon-anchor-link text-current invisible
     }
-    .contents-list > * {
+    .contents-list > :first-child {
         @apply mt-2
     }
     hr:has(+ .help-footnote), .sub-title h2 {
@@ -327,7 +327,7 @@ p:has(+ #page-search-link) {
         @apply mt-2
     }
 
-    .block {
+    .block, .help-section {
         ul, ol {
             li {
                 @apply ml-8
@@ -340,7 +340,7 @@ p:has(+ #page-search-link) {
             @apply list-decimal
         }
     }
-    .member-list, .block {
+    .member-list, .block, .help-section {
         code:not(.snippet code) {
             @apply bg-table-odd outline outline-table-border px-[0.25em] rounded-[0.25em]
         }
