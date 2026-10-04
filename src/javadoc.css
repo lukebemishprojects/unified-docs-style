@@ -28,6 +28,9 @@ nav {
         }
         .sub-nav {
             .sub-nav-list {
+                & > *:hover {
+                    @apply text-foreground-link
+                }
                 & > *:not(:first-child) {
                     &::before {
                         @apply icon-triangle-right inline-icon
@@ -64,7 +67,7 @@ nav {
             a {
                 @apply text-foreground-disabled
             }
-            .current-selection {
+            .current-selection, a:hover {
                 @apply text-foreground-link
             }
             .toc-list {
