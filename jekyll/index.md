@@ -23,7 +23,7 @@ And yet more content.
 | Entry 1     | Entry 3     |
 | Entry 2     | Entry 4     |
 
-Text can be **bold** or *italic* or ~~strikethrough~~ or `code` or `foo(123) + BAR`.
+Text can be **bold** or *italic* or ~~strikethrough~~ or `code`.
 
 ```
 We can have code blocks!
@@ -58,3 +58,24 @@ Sticking HTML escapes in code blocks won't break stuff:
 
 > [!CAUTION]
 > Advises about risks or negative outcomes of certain actions.
+
+Do footnotes work?
+
+Here is a simple footnote[^1].
+
+[^1]: My reference.
+
+We can insert horizontal rules:
+
+------------------------------------------
+
+We can have lists:
+
+* A
+* B
+    * C
+
+1. A
+2. B
+3. C
+    4. D

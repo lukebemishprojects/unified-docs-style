@@ -52,6 +52,17 @@ main {
         @apply shared-link
     }
 
+    .footnotes {
+        &::before {
+            content: "";
+            @apply my-2 -mx-2 border-t border-page-foreground w-full block
+        }
+        .reversefootnote {
+            font-variant-emoji: text;
+        }
+        @apply text-sm text-foreground-disabled
+    }
+
     code {
         &:not(pre &) {
             @apply shared-code;
@@ -63,6 +74,7 @@ main {
     }
 
     @apply shared-headings;
+    @apply shared-lists;
 
     hr {
         @apply mt-2 -mx-2
