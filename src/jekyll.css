@@ -85,6 +85,7 @@ main {
     }
 
     :has(:not(article, section, header, footer)) ~ *, :not(article, section, header, footer) ~ * {
+        /* Margins get this awful selector. It targets all non-nesting direct children of nesting tags, *except* the very first in the document */
         &, * {
             :is(main, article, section, header, footer) > & {
                 @apply mt-2;
