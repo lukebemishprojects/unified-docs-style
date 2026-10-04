@@ -59,7 +59,7 @@ main {
     .footnotes {
         &::before {
             content: "";
-            @apply my-2 -mx-2 border-t border-page-foreground w-full block
+            @apply my-2 -mx-2 w-[calc(100%+(--spacing(4)))] border-t border-page-foreground block
         }
         .reversefootnote {
             font-variant-emoji: text;
@@ -81,13 +81,20 @@ main {
     @apply shared-lists;
 
     hr {
-        @apply -mx-2
+        @apply -mx-2 w-[calc(100%+(--spacing(4)))]
     }
 
-    :has(:not(article, section, header, footer)) ~ *, :not(article, section, header, footer) ~ * {
+    :has(:not(article, section, header, footer, div)) ~ *, :not(article, section, header, footer, div) ~ * {
         /* Margins get this awful selector. It targets all non-nesting direct children of nesting tags, *except* the very first in the document */
         &, * {
-            :is(main, article, section, header, footer) > & {
+            :is(main, article, section, header, footer, div) > &:not(article, section, header, footer, div) {
+                @apply mt-2;
+                @apply shared-headings-margins;
+                &:where(h1) {
+                    @apply mt-8
+                }
+            }
+            details > &:not(article, section, header, footer, div, summary) {
                 @apply mt-2;
                 @apply shared-headings-margins;
                 &:where(h1) {
@@ -99,6 +106,34 @@ main {
 
     article, section, header, footer {
         display: contents;
+    }
+
+    details {
+        summary {
+            @apply p-2 bg-table-odd border-l-3 border-table-border
+        }
+        &[open] {
+            &::details-content {
+                @apply p-[calc(--spacing(2)-1px)] pt-0 border border-table-border
+            }
+            > :has(pre), > :has(table), > pre, > table {
+                &:nth-child(2) {
+                    :has(pre), pre, :has(table), table {
+                        @apply mt-0
+                    }
+                    @apply -mt-px
+                }
+                &:last-child {
+                    :has(pre), pre, :has(table), table {
+                        @apply mb-0
+                    }
+                    :has(table), table, &:is(table) {
+                        @apply w-[calc(100%+(--spacing(4)))]
+                    }
+                    @apply -mb-2
+                }
+            }
+        }
     }
 
     @apply shared-main;
@@ -119,7 +154,7 @@ main {
                 @apply hidden
             }
         }
-        @apply outline outline-table-border relative bg-table-odd p-2 overflow-x-auto -mx-2;
+        @apply border border-table-border relative bg-table-odd p-2 overflow-x-auto -mx-2 w-[calc(100%+(--spacing(4)))];
         &.highlight {
             /* Needed for specificity, to override rouge */
             @apply bg-table-odd

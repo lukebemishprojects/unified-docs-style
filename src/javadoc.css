@@ -173,11 +173,11 @@ p:has(+ #page-search-link) {
     }
 
     hr {
-        @apply mt-2 -mx-2
+        @apply mt-2 -mx-2 w-[calc(100%+(--spacing(4)))]
     }
     .member-list > li:not(:last-child)::after, .details-list > li:not(:last-child) .member-list > li:last-child::after {
         content: "";
-        @apply mt-2 -mx-2 border-t w-full block
+        @apply mt-2 -mx-2 w-[calc(100%+(--spacing(4)))] border-t block
     }
 
     code {
@@ -247,7 +247,7 @@ p:has(+ #page-search-link) {
         .snippet {
             @apply bg-table-odd p-2 overflow-x-auto
         }
-        @apply outline outline-table-border relative -mx-2
+        @apply outline outline-table-border relative -mx-2 w-[calc(100%+(--spacing(4)))]
     }
 
     :where(.block, .help-section):not(.summary-table .block) {
@@ -286,13 +286,13 @@ p:has(+ #page-search-link) {
         @apply text-base px-2 py-1 font-normal w-fit mt-2 bg-table-odd border-b-3 border-table-border
     }
     .caption {
-        @apply -mx-2 
+        @apply -mx-2
     }
     .summary-table, .result-table {
         > * {
             @apply py-1 px-2 outline outline-table-border
         }
-        @apply -mx-2 
+        @apply -mx-2 w-[calc(100%+(--spacing(4)))]
     }
     table {
         @apply shared-table
@@ -339,11 +339,11 @@ p:has(+ #page-search-link) {
         .active-table-tab, .page-search-header:only-child {
             @apply bg-table-odd border-b-3 border-table-border
         }
-        @apply flex flex-row gap-2 -mx-2 mt-2
+        @apply flex flex-row gap-2 -mx-2 max-w-[calc(100%+(--spacing(4)))] w-[calc(100%+(--spacing(4)))] mt-2
     }
 
     .inherited-list {
-        @apply -mx-2 mt-2 grid grid-cols-1;
+        @apply -mx-2 w-[calc(100%+(--spacing(4)))] mt-2 grid grid-cols-1;
         >:not(h3) {
             @apply py-1 px-2 bg-table-odd block outline outline-table-border
         }

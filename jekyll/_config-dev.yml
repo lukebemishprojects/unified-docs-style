@@ -24,6 +24,9 @@ collections:
     permalink: /categories/:slugified_categories:output_ext
 
 unified-docs-theme:
+  nav_pages:
+    - page: index.md
+    - javadoc: test-library
   javadoc:
     test-library:
       title: Test Library

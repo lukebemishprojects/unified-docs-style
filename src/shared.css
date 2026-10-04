@@ -172,7 +172,7 @@
 
 @utility shared-table {
     th, td {
-        @apply py-1 px-2 outline outline-offset-[-0.03125rem] outline-table-border
+        @apply py-1 px-2 border border-table-border
     }
     th {
         @apply font-bold

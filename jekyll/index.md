@@ -79,3 +79,38 @@ We can have lists:
 2. B
 3. C
     4. D
+
+{% details Expand summary %}
+To see contents
+{% enddetails %}
+
+{% details With a code block %}
+```java
+public record Foo() {}
+```
+{% enddetails %}
+
+{% details With a code block and other text %}
+Text goes here
+
+```java
+public record Foo() {}
+```
+
+And here
+{% enddetails %}
+
+{% details With a code block then text %}
+```java
+public record Foo() {}
+```
+
+Text here
+{% enddetails %}
+
+{% details With a table %}
+| Column A    | Column B    |
+| ----------- | ----------- |
+| Entry 1     | Entry 3     |
+| Entry 2     | Entry 4     |
+{% enddetails %}

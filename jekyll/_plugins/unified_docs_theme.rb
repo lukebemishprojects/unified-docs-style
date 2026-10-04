@@ -3,6 +3,23 @@ require 'digest'
 $processed_static_files ||= {}
 
 module UnifiedDocsTheme
+    class DetailsBlock < Liquid::Block
+        def initialize(tag_name, text, tokens)
+            super
+            @summary = text.strip()
+        end
+
+        def render(context)
+            site = context.registers[:site]
+            markdown= site.find_converter_instance(::Jekyll::Converters::Markdown)
+            text = super
+            "<details>" \
+                "<summary>#{@summary}</summary>" \
+                "#{markdown.convert(text.gsub(/^#{$/}/, "").gsub(/#{$/}$/, ""))}" \
+            "</details>"
+        end
+    end
+
     class FlexibleStaticFile < Jekyll::StaticFile
         def initialize(site, base, dir, name, prefix)
             @real_dir = dir
@@ -32,51 +49,52 @@ module UnifiedDocsTheme
     end
 end
 
+Liquid::Template.register_tag('details', UnifiedDocsTheme::DetailsBlock)
+
 Jekyll::Hooks.register :site, :post_write do |site|
     theme_data = site.config['unified-docs-theme']
     javadoc_data = theme_data ? theme_data['javadoc'] : {}
     javadoc_data.each do |id, data|
         nav_paths = theme_data ? theme_data['nav_pages'] : nil
-        nav_paths = nav_paths ? nav_paths : site.pages.map() do |page|
-            page.path
+        nav_paths = nav_paths ? nav_paths.dup : site.pages.map() do |page|
+            {"page" => page.path}
         end + javadoc_data.map() do |id, data|
-            id
+            {"javadoc" => id}
         end
-        if not nav_paths.include?(id)
-            nav_paths << id
+        if not nav_paths.include?({"javadoc" => id})
+            nav_paths << {"javadoc" => id}
         end
         nav_titles = []
         nav_urls = []
         real_paths = []
-        for path in nav_paths
-            page = site.pages.find() do |page|
-                page.path == path
-            end
-            keeplooking = true
-            if page
-                title = page.data['title']
-                if title
-                    nav_titles << title
-                    nav_urls << page.url
-                    real_paths << path
-                    keeplooking = false
+        for navpage in nav_paths
+            if navpage["page"]
+                page = site.pages.find() do |page|
+                    page.path == navpage["page"]
                 end
-            end
-            if keeplooking
+                if page
+                    title = page.data['title']
+                    if title
+                        nav_titles << title
+                        nav_urls << page.url
+                        real_paths << navpage
+                    end
+                end
+            elsif navpage["javadoc"]
                 javadoc = javadoc_data.find() do |id, data|
-                    id == path
+                    id == navpage["javadoc"]
                 end
                 if javadoc
                     nav_titles << javadoc[1]['title']
                     nav_urls << Jekyll::URL.new(
                         :template => "/javadoc/" + javadoc[0]
                     ).to_s
-                    real_paths << path
+                    real_paths << navpage
                 end
             end
         end
         zipped = real_paths.zip(nav_urls.zip(nav_titles))
-        idx = zipped.find_index { |p, data| p == id }
+        idx = zipped.find_index { |p, data| p == {"javadoc" => id} }
         beforeentries = zipped[0...(idx+1)].map() do |path, (url, title)|
             '<li><a href='+url.dump+'>'+CGI.escapeHTML(title)+"</a></li>"
         end

@@ -1,0 +1,77 @@
+{%- assign page_count = 0 -%}
+{%- assign current_in_navbar = false -%}
+{%- if include.nav_pages -%}
+    {%- for navpage in include.nav_pages -%}
+        {%- if navpage.page -%}
+            {%- assign hyperpage = site.pages | where: "path", navpage.page | first -%}
+            {%- if hyperpage.title -%}
+                {%- assign page_count = page_count | plus: 1 -%}
+            {%- endif -%}
+            {%- if hyperpage and hyperpage.url == page.url -%}
+                {%- assign current_in_navbar = true -%}
+            {%- endif -%}
+        {% elsif navpage.javadoc -%}
+            {%- for javadoc in site.unified-docs-theme.javadoc | default: [] -%}
+                {%- if javadoc[0] == navpage.javadoc -%}
+                    {%- assign page_count = page_count | plus: 1 -%}
+                {%- endif -%}
+            {%- endfor -%}
+        {%- endif -%}
+    {%- endfor -%}
+{%- else -%}
+    {%- for javadoc in site.unified-docs-theme.javadoc | default: [] -%}
+        {%- if javadoc[1].title -%}
+            {%- assign page_count = page_count | plus: 1 -%}
+        {%- endif -%}
+    {%- endfor -%}
+    {%- for hyperpage in site.pages | default: [] -%}
+        {%- if hyperpage.title -%}
+            {%- assign page_count = page_count | plus: 1 -%}
+        {%- endif -%}
+        {%- if hyperpage.url == page.url -%}
+            {%- assign current_in_navbar = true -%}
+        {%- endif -%}
+    {%- endfor -%}
+{%- endif -%}
+{%- unless include.nav_pages == empty or (page_count == 1 and current_in_navbar ) %}
+    <header><nav class="site-nav"><ol>
+    {%- if include.nav_pages -%}
+        {%- assign page_url = null -%}
+        {%- assign page_title = null -%}
+        {%- for navpage in include.nav_pages -%}
+        {%- if navpage.page -%}
+            {%- assign hyperpage = site.pages | where: "path", navpage.page | first -%}
+            {%- if hyperpage -%}
+                {%- assign page_url = hyperpage.url -%}
+                {%- assign page_title = hyperpage.title -%}
+            {%- endif -%}
+        {%- elsif navpage.javadoc -%}
+            {%- for javadoc in site.unified-docs-theme.javadoc | default: [] -%}
+                {%- if javadoc[0] == navpage.javadoc -%}
+                    {%- assign page_url = "/javadoc/" | append: javadoc[0] -%}
+                    {%- assign page_title = javadoc[1].title -%}
+                {%- endif -%}
+            {%- endfor -%}
+        {%- endif -%}
+        {%- if page_title %}
+        <li><a {% if page_url == page.url %}{{ 'class="to-current-page" ' }}{% endif %} href="{{ page_url | relative_url }}">{% if page_count == 1 %}&larr; {% endif %}{{ page_title | escape }}</a></li>
+        {%- endif -%}
+        {%- endfor %}
+    {%- else -%}
+        {%- for hyperpage in site.pages -%}
+        {%- assign page_url = hyperpage.url -%}
+        {%- assign page_title = hyperpage.title -%}
+        {%- if page_title %}
+        <li><a {% if page_url == page.url %}{{ 'class="to-current-page" ' }}{% endif %} href="{{ page_url | relative_url }}">{% if page_count == 1 %}&larr; {% endif %}{{ page_title | escape }}</a></li>
+        {%- endif -%}
+        {%- endfor %}
+        {%- for javadoc in site.unified-docs-theme.javadoc | default: [] -%}
+        {%- assign page_url = "/javadoc/" | append: javadoc[0] -%}
+        {%- assign page_title = javadoc[1].title -%}
+        {%- if page_title %}
+        <li><a {% if page_url == page.url %}{{ 'class="to-current-page" ' }}{% endif %} href="{{ page_url | relative_url }}">{% if page_count == 1 %}&larr; {% endif %}{{ page_title | escape }}</a></li>
+        {%- endif -%}
+        {%- endfor %}
+    {%- endif -%}
+    </ol></nav></header>
+{%- endunless %}
