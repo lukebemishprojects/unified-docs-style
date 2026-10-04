@@ -1,0 +1,33 @@
+{%- assign default_paths = site.pages | map: "path" -%}
+{%- for javadoc in site.unified-docs-theme.javadoc | default: [] -%}
+    {%- assign default_paths = default_paths | push: javadoc[0] -%}
+{%- endfor -%}
+{%- assign page_paths = site.unified-docs-theme.nav_pages | default: default_paths -%}
+{%- unless page_paths == empty or (page_paths.size == 1 and page.path == page_paths[0] ) %}
+    <header><nav class="site-nav"><ol>
+    {%- if page_paths.size == 1 -%}
+        {%- assign hyperpage = site.pages | where: "path", page_paths[0] | first -%}
+        <li><a href="{{ hyperpage.url | relative_url }}">&larr; {{ hyperpage.title | escape }}</a></li>
+    {%- else -%}
+        {%- for path in page_paths -%}
+        {%- assign hyperpage = site.pages | where: "path", path | first -%}
+        {%- assign page_url = null -%}
+        {%- assign page_title = null -%}
+        {%- if hyperpage == null -%}
+            {%- for javadoc in site.unified-docs-theme.javadoc | default: [] -%}
+                {%- if javadoc[0] == path -%}
+                    {%- assign page_url = "/javadoc/" | append: javadoc[0] -%}
+                    {%- assign page_title = javadoc[1].title -%}
+                {%- endif -%}
+            {%- endfor -%}
+        {%- else -%}
+            {%- assign page_url = hyperpage.url -%}
+            {%- assign page_title = hyperpage.title -%}
+        {%- endif -%}
+        {%- if page_title %}
+        <li><a {% if page_url == page.url %}{{ 'class="to-current-page" ' }}{% endif %} href="{{ page_url | relative_url }}">{{ page_title | escape }}</a></li>
+        {%- endif -%}
+        {%- endfor %}
+    {%- endif -%}
+    </ol></nav></header>
+{%- endunless %}

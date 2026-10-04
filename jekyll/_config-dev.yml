@@ -22,3 +22,9 @@ collections:
   category:
     output: true
     permalink: /categories/:slugified_categories:output_ext
+
+unified-docs-theme:
+  javadoc:
+    test-library:
+      title: Test Library
+      path: ../javadoc/build/docs/javadoc/

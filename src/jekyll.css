@@ -127,11 +127,13 @@ main {
     }
 
     :is(h1, h2, h3, h4, h5, h6) > a {
-        &:hover::after {
-            @apply visible
-        }
-        &::after {
-            @apply inline-icon icon-anchor-link text-current invisible
+        &.anchor-heading {
+            &:hover::after {
+                @apply visible
+            }
+            &::after {
+                @apply inline-icon icon-anchor-link text-current invisible
+            }
         }
         @apply text-page-foreground
     }
@@ -145,27 +147,39 @@ nav {
         a {
             @apply text-foreground-disabled
         }
-        a:active, a.to-current-target {
+        a:active, a:hover, a.to-current-page {
             @apply text-foreground-link
-        }
-
-        ul, ol {
-            @apply list-none;
-        }
-        li {
-            @apply ml-0;
         }
 
         li li {
             @apply pl-4
         }
         h2 {
-            @apply not-italic font-normal text-sm mt-0;
             &::after {
                 content: "";
                 @apply w-full h-0 border-t border-page-foreground block my-2
             }
         }
         @apply fixed right-[max((100%-85rch)/2-30ch-1rem,0px)] top-12 w-[30ch] text-sm text-foreground-disabled
+    }
+
+    &.site-nav {
+        a {
+            @apply text-foreground-disabled
+        }
+        a:active, a:hover, a.to-current-target {
+            @apply text-foreground-link
+        }
+
+        li li {
+            @apply pl-4
+        }
+        h2 {
+            &::after {
+                content: "";
+                @apply w-full h-0 border-t border-page-foreground block my-2
+            }
+        }
+        @apply fixed left-[max((100%-85rch)/2-30ch-1rem,0px)] top-12 w-[30ch] text-sm text-foreground-disabled
     }
 }

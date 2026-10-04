@@ -14,12 +14,17 @@ nav {
         .nav-menu-button {
             @apply hidden
         }
-        .nav-bar-cell1-rev, .nav-list > *:hover {
+        .nav-bar-cell1-rev, .nav-list > li:hover {
             @apply text-foreground-link
         }
         .top-nav::after, .sub-nav .sub-nav-list:not(:empty)::after {
             content: "";
             @apply w-full h-0 border-t border-page-foreground block my-2
+        }
+        .nav-list {
+            .nav-list {
+                @apply pl-4
+            }
         }
         .sub-nav {
             .sub-nav-list {

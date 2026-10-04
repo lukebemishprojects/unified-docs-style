@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Heading 1
+title: Home
 ---
 
 Content

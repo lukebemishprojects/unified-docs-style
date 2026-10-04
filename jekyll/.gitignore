@@ -10,3 +10,4 @@ Gemfile.lock
 vendor/
 
 /_sass/unified.css
+/assets/css/javadoc.css

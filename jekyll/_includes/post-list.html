@@ -1,0 +1,11 @@
+{% for post in include.posts %}
+<article itemscope itemtype="http://schema.org/BlogPosting" role="article" lang="{% if post.lang %}{{ post.lang }}{% else %}en-US{% endif %}">
+    <header>
+        <h2 itemprop="name"><a href="{{ post.url | prepend: site.baseurl }}" itemprop="url">{{ post.title }}</a></h2>
+    </header>
+    <section itemprop="description">
+        <p>{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
+    </section>
+    <small><time datetime="{{ post.date | date_to_long_string }}">{{ post.date | date_to_long_string }}</time></small>
+</article>
+{% endfor %}

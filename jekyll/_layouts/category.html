@@ -4,17 +4,6 @@ layout: page
 
 {{content}}
 
-{% assign page_category = page.categories | first %}
-{% for post in site.posts %}
-{% if post.categories contains page_category %}
-<article itemscope itemtype="http://schema.org/BlogPosting" role="article" lang="{% if post.lang %}{{ post.lang }}{% else %}en-US{% endif %}">
-    <header>
-        <h2 itemprop="name"><a href="{{ post.url | prepend: site.baseurl }}" itemprop="url">{{ post.title }}</a></h2>
-    </header>
-    <section itemprop="description">
-        <p>{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
-    </section>
-    <small><time datetime="{{ post.date | date_to_long_string }}">{{ post.date | date_to_long_string }}</time></small>
-</article>
-{% endif %}
-{% endfor %}
+{%- assign page_category = page.categories | first -%}
+{%- assign posts = site.posts | where_exp: "post", "post.categories contains page_category" -%}
+{%- include post-list.html posts=posts -%}
