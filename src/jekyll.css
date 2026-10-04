@@ -146,6 +146,14 @@ nav {
         a:active, a.to-current-target {
             @apply text-foreground-link
         }
+
+        ul, ol {
+            @apply list-none;
+        }
+        li {
+            @apply ml-0;
+        }
+
         li li {
             @apply pl-4
         }
