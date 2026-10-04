@@ -10,14 +10,18 @@ main {
     ins, u {
         @apply shared-underline
     }
-    del {
+    del, strike {
         @apply shared-strikethrough
     }
     kbd {
         @apply shared-kbd
     }
-    .highlighted {
+    mark {
         @apply shared-highlight
+    }
+
+    small {
+        @apply text-sm text-foreground-disabled
     }
 
     blockquote {
@@ -77,22 +81,19 @@ main {
     @apply shared-lists;
 
     hr {
-        @apply mt-2 -mx-2
+        @apply -mx-2
     }
 
-    > * {
-        @apply mt-2
-    }
-
-    > :first-child {
-        &:is(article, section, header, footer) {
-            &:not(:has(:not(article, section, header, footer))) {
-                & + * {
-                    @apply mt-0
+    :has(:not(article, section, header, footer)) ~ *, :not(article, section, header, footer) ~ * {
+        &, * {
+            :is(main, article, section, header, footer) > & {
+                @apply mt-2;
+                @apply shared-headings-margins;
+                &:where(h1) {
+                    @apply mt-8
                 }
             }
         }
-        @apply mt-0
     }
 
     article, section, header, footer {

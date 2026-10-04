@@ -160,6 +160,9 @@ p:has(+ #page-search-link) {
     }
 
     @apply shared-headings;
+    * {
+        @apply shared-headings-margins;
+    }
 
     hr {
         @apply mt-2 -mx-2

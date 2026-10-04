@@ -201,10 +201,19 @@
         @apply text-3xl font-bold
     }
     h2 {
-        @apply text-2xl font-bold italic mt-5
+        @apply text-2xl font-bold italic
     }
     h3 {
-        @apply text-lg font-bold mt-4
+        @apply text-lg font-bold
+    }
+}
+
+@utility shared-headings-margins {
+    &:where(h2) {
+        @apply mt-5
+    }
+    &:where(h3) {
+        @apply mt-4
     }
 }
 

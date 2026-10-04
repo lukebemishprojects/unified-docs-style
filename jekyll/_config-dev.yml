@@ -17,3 +17,8 @@ plugins:
 sass:
   quiet_deps: true
   silence_deprecations: [import]
+
+collections:
+  category:
+    output: true
+    permalink: /categories/:slugified_categories:output_ext
