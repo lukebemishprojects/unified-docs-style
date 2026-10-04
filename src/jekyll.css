@@ -1,0 +1,149 @@
+@import "./shared.css";
+
+main {
+    strong, b {
+        @apply shared-bold
+    }
+    em, i, cite {
+        @apply shared-italic
+    }
+    ins, u {
+        @apply shared-underline
+    }
+    del {
+        @apply shared-strikethrough
+    }
+    kbd {
+        @apply shared-kbd
+    }
+    .highlighted {
+        @apply shared-highlight
+    }
+
+    blockquote {
+        @apply shared-blockquote
+    }
+
+    blockquote.alert-note {
+        @apply shared-blockquote-note
+    }
+
+    blockquote.alert-tip {
+        @apply shared-blockquote-tip
+    }
+
+    blockquote.alert-important {
+        @apply shared-blockquote-important
+    }
+
+    blockquote.alert-warning {
+        @apply shared-blockquote-warning
+    }
+
+    blockquote.alert-caution {
+        @apply shared-blockquote-caution
+    }
+
+    table {
+        @apply shared-table
+    }
+
+    a {
+        @apply shared-link
+    }
+
+    code {
+        &:not(pre &) {
+            @apply shared-code;
+            &.highlight {
+                /* Needed for specificity, to override rouge */
+                @apply bg-table-odd
+            }
+        }
+    }
+
+    @apply shared-headings;
+
+    hr {
+        @apply mt-2 -mx-2
+    }
+
+    > * {
+        @apply mt-2
+    }
+
+    > :first-child {
+        &:is(article, section, header, footer) {
+            &:not(:has(:not(article, section, header, footer))) {
+                & + * {
+                    @apply mt-0
+                }
+            }
+        }
+        @apply mt-0
+    }
+
+    article, section, header, footer {
+        display: contents;
+    }
+
+    @apply shared-main;
+
+    pre {
+        .copy {
+            &::after {
+                @apply icon-copy inline-icon mr-0 ml-[0.3em] mt-[calc((1lh-1.5cap)/2)];
+            }
+            > *:first-child {
+                @apply transition-opacity duration-200 ease-in-out opacity-0
+            }
+            &:hover > *:first-child {
+                @apply opacity-100
+            }
+            @apply absolute top-0 right-0 p-2 flex flex-row font-normal text-page-foreground font-sans;
+            @media print {
+                @apply hidden
+            }
+        }
+        @apply outline outline-table-border relative bg-table-odd p-2 overflow-x-auto;
+        &.highlight {
+            /* Needed for specificity, to override rouge */
+            @apply bg-table-odd
+        }
+    }
+
+    :is(h1, h2, h3, h4, h5, h6) > a {
+        &:hover::after {
+            @apply visible
+        }
+        &::after {
+            @apply inline-icon icon-anchor-link text-current invisible
+        }
+        @apply text-page-foreground
+    }
+}
+
+nav {
+    @media print {
+        @apply hidden
+    }
+    &.on-this-page {
+        a {
+            @apply text-foreground-disabled
+        }
+        a:active, a.to-current-target {
+            @apply text-foreground-link
+        }
+        li li {
+            @apply pl-4
+        }
+        h2 {
+            @apply not-italic font-normal text-sm mt-0;
+            &::after {
+                content: "";
+                @apply w-full h-0 border-t border-page-foreground block my-2
+            }
+        }
+        @apply fixed right-[max((100%-85rch)/2-30ch-1rem,0px)] top-12 w-[30ch] text-sm text-foreground-disabled
+    }
+}

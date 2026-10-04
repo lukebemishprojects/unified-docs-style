@@ -1,0 +1,61 @@
+{% capture alertNotesWorkspace %}
+    {% assign nodes = include.html | split: '<blockquote' %}
+    {% capture edited_notes %}{{ nodes[0] }}{% endcapture %}
+    {% assign nodes = nodes | shift %}
+
+    {% for node in nodes %}
+        {% if node == "" %}
+            {% continue %}
+        {% endif %}
+
+        {% capture _hAttr %}{{ node | split: '>' | first }}{% endcapture %}
+        {% capture _hAttrToStrip %}{{ _hAttr }}>{% endcapture %}
+        {% assign blockquote = node | replace_first: _hAttrToStrip, '' | lstrip %}
+
+        {% assign _classWorkspace = _hAttr | split: 'class="' %}
+        {% if _classWorkspace[1] %}
+            {% assign _beforeClasses = _classWorkspace[0] %}
+            {% assign _html_class = _classWorkspace[1] | split: '"' | first %}
+            {% capture _classesToStrip %}{{ _html_class }}"{% endcapture %}
+            {% assign _afterClasses = _classWorkspace | shift | join: 'class="' | replace_first: _classesToStrip, '' %}
+            
+        {% else %}
+            {% capture _beforeClasses %}{{ _classWorkspace[0] }} {% endcapture %}
+            {% assign _afterClasses = '' %}
+            {% assign _html_class = '' %}
+        {% endif %}
+
+        {% assign _prefix = blockquote | strip_html | split: ']' | first %}
+        {% assign _strip_prefix = false %}
+        {% assign _beforeContent = '' %}
+        {% if _prefix == '[!NOTE' %}
+            {% capture _html_class %}{{ _html_class }} alert-note{% endcapture %}
+            {% assign _beforeContent = '<p><strong>Note</strong></p>' %}
+            {% assign _strip_prefix = true %}
+        {% elsif _prefix == '[!TIP' %}
+            {% capture _html_class %}{{ _html_class }} alert-tip{% endcapture %}
+            {% assign _beforeContent = '<p><strong>Tip</strong></p>' %}
+            {% assign _strip_prefix = true %}
+        {% elsif _prefix == '[!IMPORTANT' %}
+            {% capture _html_class %}{{ _html_class }} alert-important{% endcapture %}
+            {% assign _beforeContent = '<p><strong>Important</strong></p>' %}
+            {% assign _strip_prefix = true %}
+        {% elsif _prefix == '[!WARNING' %}
+            {% capture _html_class %}{{ _html_class }} alert-warning{% endcapture %}
+            {% assign _beforeContent = '<p><strong>Warning</strong></p>' %}
+            {% assign _strip_prefix = true %}
+        {% elsif _prefix == '[!CAUTION' %}
+            {% capture _html_class %}{{ _html_class }} alert-caution{% endcapture %}
+            {% assign _beforeContent = '<p><strong>Caution</strong></p>' %}
+            {% assign _strip_prefix = true %}
+        {% endif %}
+
+        {% if _strip_prefix %}
+            {% capture _prefix %}{{ _prefix }}]{% endcapture %}
+            {% assign _parts = blockquote | split: _prefix %}
+            {% capture blockquote %}{{ _parts[0] }}{{ _parts | shift | join: _prefix | lstrip }}{% endcapture %}
+        {% endif %}
+
+        {% capture edited_notes %}{{ edited_notes }}<blockquote{{ _beforeClasses }}class="{{ _html_class | strip }}"{{ _afterClasses }}>{{ _beforeContent }}{{ blockquote }}{% endcapture %}
+    {% endfor %}
+{% endcapture %}{% assign alertNotesWorkspace = '' %}{{ edited_notes | strip }}

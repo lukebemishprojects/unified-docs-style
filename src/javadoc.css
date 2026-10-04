@@ -1,67 +1,4 @@
-@import "tailwindcss";
-
-@theme {
-    --color-page-foreground: var(--color-black);
-
-    --color-page-background: var(--color-white);
-    --color-table-even: var(--color-page-background);
-    --color-table-odd: var(--color-zinc-100);
-    --color-table-border: var(--color-zinc-300);
-
-    --color-foreground-disabled: var(--color-zinc-500);
-    --color-foreground-link: var(--color-blue-800)
-}
-
-@layer base {
-    :root {
-        font-size: 18px;
-        @media print {
-            font-size: 12px;
-        }
-    }
-}
-
-@utility icon {
-    content: "";
-    display: inline-block;
-    background-size:100% 100%;
-    background-color: currentColor;
-    print-color-adjust: exact;
-}
-
-@utility inline-icon {
-    @apply size-[1.5cap] mr-[0.3em] inline-block align-[-0.25cap]
-}
-
-/* GitHub octicons: https://github.com/primer/octicons/blob/main/LICENSE */
-/* (MIT) */
-/* Then ran through the convenient converter at https://pathtoshape.matthewmorete.com/ */
-@utility icon-external-link {
-    @apply icon;
-    clip-path: shape(from 23.438% 12.5%,hline by 21.875%,arc by 0% 9.375% of 4.688% 4.688% cw small rotate 0deg,hline by -21.875%,arc by -1.563% 1.563% of 1.563% 1.563% ccw small rotate 0deg,vline by 53.125%,curve by 1.563% 1.563% with 0% 0.863%/0.7% 1.563%,hline by 53.125%,arc by 1.563% -1.563% of 1.563% 1.563% ccw small rotate 0deg,vline by -21.875%,arc by 9.375% 0% of 4.688% 4.688% cw small rotate 0deg,vline by 21.875%,arc to 76.563% 87.5% of 10.938% 10.938% cw small rotate 0deg,hline by -53.125%,arc to 12.5% 76.563% of 10.938% 10.938% cw small rotate 0deg,vline by -53.125%,curve to 23.438% 12.5% with 12.5% 17.4%/17.4% 12.5%,close,move by 42.837% -6.25%,hline by 25.912%,arc by 1.563% 1.563% of 1.563% 1.563% cw small rotate 0deg,vline by 25.912%,arc by -2.669% 1.106% of 1.563% 1.563% cw small rotate 0deg,line to 81.438% 25.188%,line to 58% 48.625%,arc by -6.513% -0.112% of 4.694% 4.694% cw small rotate 0deg,arc by -0.112% -6.513% of 4.694% 4.694% cw small rotate 0deg,line by 23.438% -23.438%,line by -9.644% -9.644%,arc to 66.275% 6.25% of 1.563% 1.563% cw small rotate 0deg,close);
-}
-
-@utility icon-caution {
-    @apply icon;
-    /*content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></svg>');*/
-    clip-path: shape(from 27.938% 1.375%,arc to 31.25% 0% of 4.681% 4.681% cw small rotate 0deg,hline by 37.5%,curve by 3.313% 1.375% with 1.244% 0%/2.431% 0.494%,line by 26.563% 26.563%,curve by 1.375% 3.313% with 0.881% 0.875%/1.375% 2.069%,vline by 37.5%,arc by -1.375% 3.313% of 4.681% 4.681% cw small rotate 0deg,line by -26.563% 26.563%,arc to 68.75% 100% of 4.681% 4.681% cw small rotate 0deg,hline to 31.25%,arc by -3.313% -1.375% of 4.681% 4.681% cw small rotate 0deg,line to 1.375% 72.063%,arc to 0% 68.75% of 4.681% 4.681% cw small rotate 0deg,vline to 31.25%,curve by 1.375% -3.313% with 0% -1.244%/0.494% -2.431%,close,move by 5.25% 8%,line to 9.375% 33.188%,vline by 33.625%,line by 23.813% 23.813%,hline by 33.625%,line by 23.813% -23.813%,vline to 33.188%,line to 66.813% 9.375%,close,move to 50% 25%,arc by 4.688% 4.688% of 4.688% 4.688% cw small rotate 0deg,vline by 21.875%,arc by -9.375% 0% of 4.688% 4.688% cw small rotate 0deg,vline by -21.875%,arc to 50% 25% of 4.688% 4.688% cw small rotate 0deg,close,move by 0% 50%,arc by 0% -12.5% of 6.25% 6.25% cw large rotate 0deg,arc by 0% 12.5% of 6.25% 6.25% cw small rotate 0deg,close);
-}
-
-@utility icon-triangle-right {
-    @apply icon;
-    clip-path: shape(from 40.169% 27.669%,line by 21.225% 21.225%,arc by 0% 2.212% of 1.563% 1.563% cw small rotate 0deg,line by -21.225% 21.225%,arc to 37.5% 71.225% of 1.563% 1.563% cw small rotate 0deg,vline to 28.775%,arc by 2.669% -1.106% of 1.563% 1.563% cw small rotate 0deg,close);
-}
-
-@utility icon-anchor-link {
-    @apply icon;
-    clip-path: shape(from 48.594% 20.469%,line by 7.813% -7.813%,arc by 30.938% 30.938% of 21.875% 21.875% cw large rotate 0deg,line by -15.625% 15.625%,arc by -30.938% 0% of 21.875% 21.875% cw small rotate 0deg,arc by 0.112% -6.513% of 4.694% 4.694% cw small rotate 0deg,arc by 6.513% -0.112% of 4.694% 4.694% cw small rotate 0deg,arc by 17.688% 0% of 12.488% 12.488% ccw small rotate 0deg,line by 15.625% -15.625%,arc by -17.688% -17.688% of 12.512% 12.512% ccw small rotate 0deg,line by -7.813% 7.813%,arc by -6.513% -0.112% of 4.694% 4.694% cw small rotate 0deg,arc by -0.112% -6.513% of 4.694% 4.694% cw small rotate 0deg,close,move by -29.313% 60.25%,arc by 17.688% 0% of 12.488% 12.488% ccw small rotate 0deg,line by 7.813% -7.813%,arc by 6.513% 0.112% of 4.694% 4.694% cw small rotate 0deg,arc by 0.112% 6.513% of 4.694% 4.694% cw small rotate 0deg,line by -7.813% 7.813%,arc by -30.938% -30.938% of 21.875% 21.875% cw large rotate 0deg,line by 15.625% -15.625%,arc by 30.938% 0% of 21.875% 21.875% cw small rotate 0deg,arc by -0.112% 6.513% of 4.694% 4.694% cw small rotate 0deg,arc by -6.513% 0.112% of 4.694% 4.694% cw small rotate 0deg,arc by -17.688% 0% of 12.488% 12.488% ccw small rotate 0deg,line by -15.625% 15.625%,arc by 0% 17.688% of 12.488% 12.488% ccw small rotate 0deg,close);
-}
-
-
-@utility icon-x {
-    @apply icon;
-    clip-path: shape(from 23.25% 23.25%,arc by 6.625% 0% of 4.688% 4.688% cw small rotate 0deg,line to 50% 43.375%,line by 20.125% -20.125%,arc by 7.969% 2.038% of 4.681% 4.681% cw small rotate 0deg,arc by -1.344% 4.588% of 4.681% 4.681% cw small rotate 0deg,line to 56.625% 50%,line by 20.125% 20.125%,arc by -2.038% 7.969% of 4.681% 4.681% cw small rotate 0deg,arc by -4.588% -1.344% of 4.681% 4.681% cw small rotate 0deg,line to 50% 56.625%,line by -20.125% 20.125%,arc by -6.513% -0.112% of 4.694% 4.694% cw small rotate 0deg,arc by -0.112% -6.513% of 4.694% 4.694% cw small rotate 0deg,line to 43.375% 50%,line to 23.25% 29.875%,arc by 0% -6.625% of 4.688% 4.688% cw small rotate 0deg,close);
-}
+@import "./shared.css";
 
 nav {
     @media print {
@@ -175,7 +112,7 @@ p:has(+ #page-search-link) {
 
 .copy {
     > img {
-        @apply size-[1.5cap] mx-[0.3em] inline-block align-[-0.25cap] my-auto
+        @apply icon-copy inline-icon mr-0 ml-[0.3em] mt-[calc((1lh-1.5cap)/2)];
     }
     > *:not(img) {
         @apply transition-opacity duration-200 ease-in-out opacity-0
@@ -213,32 +150,16 @@ p:has(+ #page-search-link) {
 .main-grid {
     @apply flex flex-row;
     @apply text-page-foreground bg-page-background;
+
     main {
-        @apply max-w-[85rch] min-w-[min(100dvw,85rch)] px-4 py-12 mx-auto;
-        @media print {
-            @apply max-w-full mx-0 w-full
-        }
+        @apply shared-main
     }
 
     a {
-        @apply text-foreground-link
-    }
-    a[href*="://"]::after {
-        @apply icon-external-link size-2 mb-1;
-        @media print {
-            @apply hidden
-        }
+        @apply shared-link
     }
 
-    h1 {
-        @apply text-3xl font-bold
-    }
-    h2 {
-        @apply text-2xl font-bold italic mt-5
-    }
-    h3 {
-        @apply text-lg font-bold mt-4
-    }
+    @apply shared-headings;
 
     hr {
         @apply mt-2 -mx-2
@@ -252,42 +173,38 @@ p:has(+ #page-search-link) {
         @apply font-mono
     }
     strong, b, .bold, .deprecated-label {
-        @apply font-bold
+        @apply shared-bold
     }
     em, i, cite, .italic {
-        @apply italic
+        @apply shared-italic
     }
     ins, u {
-        @apply underline
+        @apply shared-underline
     }
     del {
-        @apply line-through
+        @apply shared-strikethrough
     }
     kbd {
-        @apply font-mono outline outline-page-foreground bg-table-border px-[0.25em] rounded-[0.25em]
+        @apply shared-kbd
     }
     .highlighted {
-        print-color-adjust: exact;
-        @apply bg-lime-300
+        @apply shared-highlight
     }
 
     .vertical-separator {
         @apply px-[0.125em]
     }
 
-    blockquote, .deprecation-block {
-        @apply px-3 mt-2 border-l-3
+    blockquote {
+        @apply shared-blockquote
+    }
+
+    .deprecation-block {
+        @apply shared-blockquote-caution
     }
 
     .index:last-of-type {
         @apply mb-8
-    }
-
-    .deprecation-block {
-        .deprecated-label::before {
-            @apply icon-caution inline-icon
-        }
-        @apply text-red-700
     }
 
     .type-signature, .package-signature, .module-signature, .member-signature {
@@ -330,21 +247,11 @@ p:has(+ #page-search-link) {
     }
 
     .block, .help-section {
-        ul, ol {
-            li {
-                @apply ml-8
-            }
-        }
-        ul {
-            @apply list-disc
-        }
-        ol {
-            @apply list-decimal
-        }
+        @apply shared-lists
     }
     .member-list, .block, .help-section {
         code:not(.snippet code) {
-            @apply bg-table-odd outline outline-table-border px-[0.25em] rounded-[0.25em]
+            @apply shared-code
         }
     }
 
@@ -377,10 +284,7 @@ p:has(+ #page-search-link) {
         @apply -mx-2 
     }
     table {
-        th, td {
-            @apply py-1 px-2 outline outline-offset-[-0.03125rem] outline-table-border
-        }
-        @apply -mx-2
+        @apply shared-table
     }
     .summary-table, .result-table, table {
         .search-result-link {
@@ -389,13 +293,13 @@ p:has(+ #page-search-link) {
             }
             @apply text-page-foreground grid grid-cols-[0.5fr_1fr]
         }
-        .table-header, th {
+        .table-header {
             @apply bg-table-odd font-bold
         }
-        .even-row-color, tbody tr:nth-child(odd), .search-result-link:nth-child(even) {
+        .even-row-color, .search-result-link:nth-child(even) {
             @apply bg-table-even
         }
-        .odd-row-color, thead tr, tbody tr:nth-child(even), .search-result-link:nth-child(odd) {
+        .odd-row-color, .search-result-link:nth-child(odd) {
             @apply bg-table-odd
         }
         &.two-column-summary {

@@ -1,0 +1,216 @@
+@import "tailwindcss";
+
+@layer base {
+    :root {
+        font-size: 18px;
+        @media print {
+            font-size: 12px;
+        }
+    }
+}
+
+@theme {
+    --color-page-foreground: var(--color-black);
+
+    --color-page-background: var(--color-white);
+    --color-table-even: var(--color-page-background);
+    --color-table-odd: var(--color-zinc-100);
+    --color-table-border: var(--color-zinc-300);
+
+    --color-foreground-disabled: var(--color-zinc-500);
+    --color-foreground-link: var(--color-blue-800)
+}
+
+@utility icon {
+    content: "";
+    display: inline-block;
+    background-size:100% 100%;
+    background-color: currentColor;
+    print-color-adjust: exact;
+}
+
+@utility inline-icon {
+    @apply size-[1.5cap] mr-[0.3em] inline-block align-[-0.25cap]
+}
+
+/* GitHub octicons: https://github.com/primer/octicons/blob/main/LICENSE */
+/* (MIT) */
+/* Then ran through the convenient converter at https://pathtoshape.matthewmorete.com/ */
+@utility icon-external-link {
+    @apply icon;
+    clip-path: shape(from 23.438% 12.5%,hline by 21.875%,arc by 0% 9.375% of 4.688% 4.688% cw small rotate 0deg,hline by -21.875%,arc by -1.563% 1.563% of 1.563% 1.563% ccw small rotate 0deg,vline by 53.125%,curve by 1.563% 1.563% with 0% 0.863%/0.7% 1.563%,hline by 53.125%,arc by 1.563% -1.563% of 1.563% 1.563% ccw small rotate 0deg,vline by -21.875%,arc by 9.375% 0% of 4.688% 4.688% cw small rotate 0deg,vline by 21.875%,arc to 76.563% 87.5% of 10.938% 10.938% cw small rotate 0deg,hline by -53.125%,arc to 12.5% 76.563% of 10.938% 10.938% cw small rotate 0deg,vline by -53.125%,curve to 23.438% 12.5% with 12.5% 17.4%/17.4% 12.5%,close,move by 42.837% -6.25%,hline by 25.912%,arc by 1.563% 1.563% of 1.563% 1.563% cw small rotate 0deg,vline by 25.912%,arc by -2.669% 1.106% of 1.563% 1.563% cw small rotate 0deg,line to 81.438% 25.188%,line to 58% 48.625%,arc by -6.513% -0.112% of 4.694% 4.694% cw small rotate 0deg,arc by -0.112% -6.513% of 4.694% 4.694% cw small rotate 0deg,line by 23.438% -23.438%,line by -9.644% -9.644%,arc to 66.275% 6.25% of 1.563% 1.563% cw small rotate 0deg,close);
+}
+
+@utility icon-note {
+    @apply icon;
+    clip-path: shape(from 0% 50%,arc by 100% 0% of 50% 50% cw large rotate 0deg,arc to 0% 50% of 50% 50% cw small rotate 0deg,close,move by 50% -40.625%,arc by 0% 81.25% of 40.625% 40.625% ccw large rotate 0deg,arc by 0% -81.25% of 40.625% 40.625% ccw small rotate 0deg,close,move to 40.625% 48.438%,arc to 45.313% 43.75% of 4.688% 4.688% cw small rotate 0deg,hline by 6.25%,arc by 4.688% 4.688% of 4.688% 4.688% cw small rotate 0deg,vline by 17.188%,hline by 1.563%,arc by 0% 9.375% of 4.688% 4.688% cw small rotate 0deg,hline by -12.5%,arc by 0% -9.375% of 4.688% 4.688% cw small rotate 0deg,hline by 1.563%,vline by -12.5%,hline by -1.563%,arc by -4.688% -4.688% of 4.688% 4.688% cw small rotate 0deg,close,move to 50% 37.5%,arc by 0% -12.5% of 6.25% 6.25% cw large rotate 0deg,arc by 0% 12.5% of 6.25% 6.25% cw small rotate 0deg,close);
+}
+
+@utility icon-tip {
+    @apply icon;
+    clip-path: shape(from 50% 9.375%,curve by -25% 23.438% with -14.769% 0%/-25% 10.563%,curve by 6.15% 14.4% with 0% 6.15%/2.65% 10.156%,line by 1.337% 1.581%,curve by 4.206% 5.3% with 1.394% 1.65%/2.938% 3.475%,curve by 3.881% 9.313% with 1.775% 2.569%/3.356% 5.6%,arc by -9.275% 1.319% of 4.688% 4.688% cw small rotate 0deg,curve by -2.313% -5.294% with -0.25% -1.762%/-1.019% -3.419%,arc by -3.388% -4.25% of 52.85% 52.85% ccw small rotate 0deg,curve by -1.675% -2% with -0.525% -0.625%/-1.081% -1.281%,curve to 15.625% 32.813% with 20.006% 48.438%/15.625% 42.288%,curve to 50% 0% with 15.625% 14.438%/30.394% 0%,smooth by 34.375% 32.813% with 34.375% 14.438%,curve by -8.3% 20.369% with 0% 9.475%/-4.381% 15.625%,curve by -1.675% 1.994% with -0.594% 0.719%/-1.15% 1.375%,curve by -3.381% 4.256% with -1.294% 1.531%/-2.394% 2.831%,curve by -2.313% 5.294% with -1.3% 1.875%/-2.063% 3.531%,arc by -9.281% -1.325% of 4.694% 4.694% cw small rotate 0deg,curve by 3.881% -9.306% with 0.525% -3.706%/2.106% -6.738%,curve by 4.206% -5.3% with 1.269% -1.825%/2.813% -3.65%,curve by 1.331% -1.581% with 0.469% -0.55%/0.919% -1.081%,curve by 6.156% -14.4% with 3.506% -4.244%/6.156% -8.25%,curve by -25% -23.438% with 0% -12.875%/-10.231% -23.438%,close,move to 35.938% 75%,hline by 28.125%,arc by 0% 9.375% of 4.688% 4.688% cw small rotate 0deg,hline by -28.125%,arc by 0% -9.375% of 4.688% 4.688% cw small rotate 0deg,close,move to 37.5% 95.313%,arc by 4.688% -4.688% of 4.688% 4.688% cw small rotate 0deg,hline by 15.625%,arc by 0% 9.375% of 4.688% 4.688% cw small rotate 0deg,hline by -15.625%,arc by -4.688% -4.688% of 4.688% 4.688% cw small rotate 0deg,close);
+}
+
+@utility icon-important {
+    @apply icon;
+    clip-path: shape(from 0% 10.938%,curve to 10.938% 0% with 0% 4.9%/4.9% 0%,hline by 78.125%,curve to 100% 10.938% with 95.1% 0%/100% 4.9%,vline by 59.375%,arc to 89.063% 81.25% of 10.938% 10.938% cw small rotate 0deg,hline to 50.375%,line by -16.081% 16.081%,arc to 18.75% 90.894% of 9.112% 9.112% cw small rotate 0deg,vline to 81.25%,hline to 10.938%,arc to 0% 70.313% of 10.938% 10.938% cw small rotate 0deg,close,move by 10.938% -1.563%,arc by -1.563% 1.563% of 1.563% 1.563% ccw small rotate 0deg,vline by 59.375%,curve by 1.563% 1.563% with 0% 0.863%/0.7% 1.563%,hline by 12.5%,arc by 4.688% 4.688% of 4.688% 4.688% cw small rotate 0deg,vline by 13.688%,line by 17% -17%,arc by 3.313% -1.375% of 4.681% 4.681% cw small rotate 0deg,hline by 40.625%,arc by 1.563% -1.563% of 1.563% 1.563% ccw small rotate 0deg,vline by -59.375%,arc by -1.563% -1.563% of 1.563% 1.563% ccw small rotate 0deg,close,move by 43.75% 14.063%,vline by 15.625%,arc by -9.375% 0% of 4.688% 4.688% cw small rotate 0deg,vline by -15.625%,arc by 9.375% 0% of 4.688% 4.688% cw small rotate 0deg,close,move to 56.25% 56.25%,arc by -12.5% 0% of 6.25% 6.25% cw large rotate 0deg,arc by 12.5% 0% of 6.25% 6.25% cw small rotate 0deg,close);
+}
+
+@utility icon-warning {
+    @apply icon;
+    clip-path: shape(from 40.356% 6.544%,curve by 19.287% 0% with 4.119% -7.713%/15.169% -7.713%,line by 38.012% 71.112%,arc to 88.013% 93.75% of 10.938% 10.938% cw small rotate 0deg,hline to 11.987%,arc by -9.644% -16.094% of 10.938% 10.938% cw small rotate 0deg,close,move by 11.019% 4.419%,arc by -2.75% 0% of 1.563% 1.563% ccw small rotate 0deg,line to 10.612% 82.075%,arc by 1.375% 2.3% of 1.563% 1.563% ccw small rotate 0deg,hline by 76.025%,arc by 1.375% -2.3% of 1.563% 1.563% ccw small rotate 0deg,close,move by 3.313% 24.975%,vline by 15.625%,arc by -9.375% 0% of 4.688% 4.688% cw small rotate 0deg,vline by -15.625%,arc by 9.375% 0% of 4.688% 4.688% cw small rotate 0deg,close,move to 56.25% 68.75%,arc by -12.5% 0% of 6.25% 6.25% cw large rotate 0deg,arc by 12.5% 0% of 6.25% 6.25% cw small rotate 0deg,close);
+}
+
+@utility icon-caution {
+    @apply icon;
+    clip-path: shape(from 27.938% 1.375%,arc to 31.25% 0% of 4.681% 4.681% cw small rotate 0deg,hline by 37.5%,curve by 3.313% 1.375% with 1.244% 0%/2.431% 0.494%,line by 26.563% 26.563%,curve by 1.375% 3.313% with 0.881% 0.875%/1.375% 2.069%,vline by 37.5%,arc by -1.375% 3.313% of 4.681% 4.681% cw small rotate 0deg,line by -26.563% 26.563%,arc to 68.75% 100% of 4.681% 4.681% cw small rotate 0deg,hline to 31.25%,arc by -3.313% -1.375% of 4.681% 4.681% cw small rotate 0deg,line to 1.375% 72.063%,arc to 0% 68.75% of 4.681% 4.681% cw small rotate 0deg,vline to 31.25%,curve by 1.375% -3.313% with 0% -1.244%/0.494% -2.431%,close,move by 5.25% 8%,line to 9.375% 33.188%,vline by 33.625%,line by 23.813% 23.813%,hline by 33.625%,line by 23.813% -23.813%,vline to 33.188%,line to 66.813% 9.375%,close,move to 50% 25%,arc by 4.688% 4.688% of 4.688% 4.688% cw small rotate 0deg,vline by 21.875%,arc by -9.375% 0% of 4.688% 4.688% cw small rotate 0deg,vline by -21.875%,arc to 50% 25% of 4.688% 4.688% cw small rotate 0deg,close,move by 0% 50%,arc by 0% -12.5% of 6.25% 6.25% cw large rotate 0deg,arc by 0% 12.5% of 6.25% 6.25% cw small rotate 0deg,close);
+}
+
+@utility icon-triangle-right {
+    @apply icon;
+    clip-path: shape(from 40.169% 27.669%,line by 21.225% 21.225%,arc by 0% 2.212% of 1.563% 1.563% cw small rotate 0deg,line by -21.225% 21.225%,arc to 37.5% 71.225% of 1.563% 1.563% cw small rotate 0deg,vline to 28.775%,arc by 2.669% -1.106% of 1.563% 1.563% cw small rotate 0deg,close);
+}
+
+@utility icon-anchor-link {
+    @apply icon;
+    clip-path: shape(from 48.594% 20.469%,line by 7.813% -7.813%,arc by 30.938% 30.938% of 21.875% 21.875% cw large rotate 0deg,line by -15.625% 15.625%,arc by -30.938% 0% of 21.875% 21.875% cw small rotate 0deg,arc by 0.112% -6.513% of 4.694% 4.694% cw small rotate 0deg,arc by 6.513% -0.112% of 4.694% 4.694% cw small rotate 0deg,arc by 17.688% 0% of 12.488% 12.488% ccw small rotate 0deg,line by 15.625% -15.625%,arc by -17.688% -17.688% of 12.512% 12.512% ccw small rotate 0deg,line by -7.813% 7.813%,arc by -6.513% -0.112% of 4.694% 4.694% cw small rotate 0deg,arc by -0.112% -6.513% of 4.694% 4.694% cw small rotate 0deg,close,move by -29.313% 60.25%,arc by 17.688% 0% of 12.488% 12.488% ccw small rotate 0deg,line by 7.813% -7.813%,arc by 6.513% 0.112% of 4.694% 4.694% cw small rotate 0deg,arc by 0.112% 6.513% of 4.694% 4.694% cw small rotate 0deg,line by -7.813% 7.813%,arc by -30.938% -30.938% of 21.875% 21.875% cw large rotate 0deg,line by 15.625% -15.625%,arc by 30.938% 0% of 21.875% 21.875% cw small rotate 0deg,arc by -0.112% 6.513% of 4.694% 4.694% cw small rotate 0deg,arc by -6.513% 0.112% of 4.694% 4.694% cw small rotate 0deg,arc by -17.688% 0% of 12.488% 12.488% ccw small rotate 0deg,line by -15.625% 15.625%,arc by 0% 17.688% of 12.488% 12.488% ccw small rotate 0deg,close);
+}
+
+
+@utility icon-x {
+    @apply icon;
+    clip-path: shape(from 23.25% 23.25%,arc by 6.625% 0% of 4.688% 4.688% cw small rotate 0deg,line to 50% 43.375%,line by 20.125% -20.125%,arc by 7.969% 2.038% of 4.681% 4.681% cw small rotate 0deg,arc by -1.344% 4.588% of 4.681% 4.681% cw small rotate 0deg,line to 56.625% 50%,line by 20.125% 20.125%,arc by -2.038% 7.969% of 4.681% 4.681% cw small rotate 0deg,arc by -4.588% -1.344% of 4.681% 4.681% cw small rotate 0deg,line to 50% 56.625%,line by -20.125% 20.125%,arc by -6.513% -0.112% of 4.694% 4.694% cw small rotate 0deg,arc by -0.112% -6.513% of 4.694% 4.694% cw small rotate 0deg,line to 43.375% 50%,line to 23.25% 29.875%,arc by 0% -6.625% of 4.688% 4.688% cw small rotate 0deg,close);
+}
+
+@utility icon-copy {
+    @apply icon;
+    clip-path: shape(from 0% 42.188%,curve to 10.938% 31.25% with 0% 36.15%/4.9% 31.25%,hline by 9.375%,arc by 0% 9.375% of 4.688% 4.688% cw small rotate 0deg,hline by -9.375%,arc by -1.563% 1.563% of 1.563% 1.563% ccw small rotate 0deg,vline by 46.875%,curve by 1.563% 1.563% with 0% 0.863%/0.7% 1.563%,hline by 46.875%,arc by 1.563% -1.563% of 1.563% 1.563% ccw small rotate 0deg,vline by -9.375%,arc by 9.375% 0% of 4.688% 4.688% cw small rotate 0deg,vline by 9.375%,arc to 57.813% 100% of 10.938% 10.938% cw small rotate 0deg,hline by -46.875%,arc to 0% 89.063% of 10.938% 10.938% cw small rotate 0deg,close,move to 31.25% 10.938%,curve to 42.188% 0% with 31.25% 4.9%/36.15% 0%,hline by 46.875%,curve to 100% 10.938% with 95.1% 0%/100% 4.9%,vline by 46.875%,arc to 89.063% 68.75% of 10.938% 10.938% cw small rotate 0deg,hline by -46.875%,arc to 31.25% 57.813% of 10.938% 10.938% cw small rotate 0deg,close,move by 10.938% -1.563%,arc by -1.563% 1.563% of 1.563% 1.563% ccw small rotate 0deg,vline by 46.875%,curve by 1.563% 1.563% with 0% 0.863%/0.7% 1.563%,hline by 46.875%,arc by 1.563% -1.563% of 1.563% 1.563% ccw small rotate 0deg,vline by -46.875%,arc by -1.563% -1.563% of 1.563% 1.563% ccw small rotate 0deg,close);
+}
+
+
+@utility shared-highlight {
+    print-color-adjust: exact;
+    @apply bg-lime-300
+}
+
+@utility shared-kbd {
+    @apply font-mono outline outline-page-foreground bg-table-border px-[0.25em] rounded-[0.25em]
+}
+
+@utility shared-strikethrough {
+    @apply line-through
+}
+
+@utility shared-underline {
+    @apply underline
+}
+
+@utility shared-italic {
+    @apply italic
+}
+
+@utility shared-bold {
+    @apply font-bold
+}
+
+@utility shared-code {
+    @apply font-mono bg-table-odd outline outline-table-border px-[0.25em] rounded-[0.25em]
+}
+
+@utility shared-lists {
+    ul, ol {
+        li {
+            @apply ml-8
+        }
+    }
+    ul {
+        @apply list-disc
+    }
+    ol {
+        @apply list-decimal
+    }
+}
+
+@utility shared-blockquote {
+    @apply px-3 mt-2 border-l-3
+}
+
+@utility shared-blockquote-note {
+    > *:first-child::before {
+        @apply icon-note inline-icon
+    }
+    @apply shared-blockquote text-blue-700
+}
+
+@utility shared-blockquote-tip {
+    > *:first-child::before {
+        @apply icon-tip inline-icon
+    }
+    @apply shared-blockquote text-green-700
+}
+
+@utility shared-blockquote-important {
+    > *:first-child::before {
+        @apply icon-important inline-icon
+    }
+    @apply shared-blockquote text-purple-700
+}
+
+@utility shared-blockquote-warning {
+    > *:first-child::before {
+        @apply icon-warning inline-icon
+    }
+    @apply shared-blockquote text-amber-700
+}
+
+@utility shared-blockquote-caution {
+    > *:first-child::before {
+        @apply icon-caution inline-icon
+    }
+    @apply shared-blockquote text-red-700
+}
+
+@utility shared-table {
+    th, td {
+        @apply py-1 px-2 outline outline-offset-[-0.03125rem] outline-table-border
+    }
+    th {
+        @apply font-bold
+    }
+    tbody tr:nth-child(odd) {
+        @apply bg-table-even
+    }
+    thead tr, tr:nth-child(even) {
+        @apply bg-table-odd
+    }
+    @apply -mx-2
+}
+
+@utility shared-link {
+    @apply text-foreground-link;
+    &[href*="://"]::after {
+        @apply icon-external-link size-2 mb-1;
+        @media print {
+            @apply hidden
+        }
+    }
+}
+
+@utility shared-headings {
+    h1 {
+        @apply text-3xl font-bold
+    }
+    h2 {
+        @apply text-2xl font-bold italic mt-5
+    }
+    h3 {
+        @apply text-lg font-bold mt-4
+    }
+}
+
+@utility shared-main {
+    @apply max-w-[85rch] min-w-[min(100dvw,85rch)] px-4 py-12 mx-auto;
+    @media print {
+        @apply max-w-full mx-0 w-full
+    }
+}
