@@ -118,7 +118,7 @@ main {
                 @apply hidden
             }
         }
-        @apply outline outline-table-border relative bg-table-odd p-2 overflow-x-auto;
+        @apply outline outline-table-border relative bg-table-odd p-2 overflow-x-auto -mx-2;
         &.highlight {
             /* Needed for specificity, to override rouge */
             @apply bg-table-odd

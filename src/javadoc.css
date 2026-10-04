@@ -239,7 +239,7 @@ p:has(+ #page-search-link) {
         .snippet {
             @apply bg-table-odd p-2 overflow-x-auto
         }
-        @apply outline outline-table-border relative
+        @apply outline outline-table-border relative -mx-2
     }
 
     :where(.block, .help-section):not(.summary-table .block) {
