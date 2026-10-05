@@ -26,7 +26,13 @@ collections:
 unified-docs-theme:
   nav_pages:
     - page: index.md
+      children:
+        - title: Unclickable Child
+        - page: _category/test.md
     - javadoc: test-library
+    - title: Not Clickable
+    - title: Google
+      permalink: https://google.com/
   javadoc:
     test-library:
       title: Test Library

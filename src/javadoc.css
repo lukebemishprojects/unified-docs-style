@@ -14,7 +14,7 @@ nav {
         .nav-menu-button {
             @apply hidden
         }
-        .nav-bar-cell1-rev, .nav-list > li:hover {
+        .nav-bar-cell1-rev, .nav-list > li a:hover {
             @apply text-foreground-link
         }
         .top-nav::after, .sub-nav .sub-nav-list:not(:empty)::after {

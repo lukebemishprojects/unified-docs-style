@@ -1,9 +1,16 @@
 {%- assign page_count = 0 -%}
 {%- assign current_in_navbar = false -%}
+
+{% assign all_pages = site.pages %}
+
+{% for collection in site.collections %}
+  {% assign all_pages = all_pages | concat: collection.docs %}
+{% endfor %}
+
 {%- if include.nav_pages -%}
     {%- for navpage in include.nav_pages -%}
         {%- if navpage.page -%}
-            {%- assign hyperpage = site.pages | where: "path", navpage.page | first -%}
+            {%- assign hyperpage = all_pages | where: "path", navpage.page | first -%}
             {%- if hyperpage.title -%}
                 {%- assign page_count = page_count | plus: 1 -%}
             {%- endif -%}
@@ -16,6 +23,12 @@
                     {%- assign page_count = page_count | plus: 1 -%}
                 {%- endif -%}
             {%- endfor -%}
+        {%- elsif navpage.title -%}
+            {%- assign page_count = page_count | plus: 1 -%}
+        {%- endif -%}
+
+        {%- if navpage.children -%}
+            {%- assign page_count = page_count | plus: navpage.children.size -%}
         {%- endif -%}
     {%- endfor -%}
 {%- else -%}
@@ -34,28 +47,42 @@
     {%- endfor -%}
 {%- endif -%}
 {%- unless include.nav_pages == empty or (page_count == 1 and current_in_navbar ) %}
-    <header><nav class="site-nav"><ol>
+    {%- if include.wrapped | default: false -%}<header><nav class="site-nav">{%- endif -%}<ol>
     {%- if include.nav_pages -%}
-        {%- assign page_url = null -%}
-        {%- assign page_title = null -%}
         {%- for navpage in include.nav_pages -%}
+        {%- assign page_url = navpage.permalink -%}
+        {%- assign page_title = navpage.title -%}
         {%- if navpage.page -%}
-            {%- assign hyperpage = site.pages | where: "path", navpage.page | first -%}
+            {%- assign hyperpage = all_pages | where: "path", navpage.page | first -%}
             {%- if hyperpage -%}
                 {%- assign page_url = hyperpage.url -%}
+                {%- if page_title == null -%}
                 {%- assign page_title = hyperpage.title -%}
+                {%- endif -%}
             {%- endif -%}
         {%- elsif navpage.javadoc -%}
             {%- for javadoc in site.unified-docs-theme.javadoc | default: [] -%}
                 {%- if javadoc[0] == navpage.javadoc -%}
                     {%- assign page_url = "/javadoc/" | append: javadoc[0] -%}
+                    {%- if page_title == null -%}
                     {%- assign page_title = javadoc[1].title -%}
+                    {%- endif -%}
                 {%- endif -%}
             {%- endfor -%}
         {%- endif -%}
         {%- if page_title %}
-        <li><a {% if page_url == page.url %}{{ 'class="to-current-page" ' }}{% endif %} href="{{ page_url | relative_url }}">{% if page_count == 1 %}&larr; {% endif %}{{ page_title | escape }}</a></li>
+        <li>
+        {%- if page_url -%}
+            <a {% if page_url == page.url %}{{ 'class="to-current-page" ' }}{% endif %} href="{{ page_url | relative_url }}">{% if page_count == 1 and page_url == page.url %}&larr; {% endif %}{{ page_title | escape }}</a>
+        {%- else -%}
+            {{ page_title | escape }}
         {%- endif -%}
+        {%- endif -%}
+
+        {%- if navpage.children and navpage.children.size > 0 -%}
+            {%- include navbar_list.html nav_pages=navpage.children -%}
+        {%- endif -%}
+        </li>
         {%- endfor %}
     {%- else -%}
         {%- for hyperpage in site.pages -%}
@@ -73,5 +100,5 @@
         {%- endif -%}
         {%- endfor %}
     {%- endif -%}
-    </ol></nav></header>
+    </ol>{%- if include.wrapped | default: false -%}</nav></header>{%- endif -%}
 {%- endunless %}
