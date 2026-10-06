@@ -180,10 +180,16 @@ nav {
         @apply hidden
     }
     &.on-this-page {
-        @apply fixed right-[max((100%-85rch)/2-25rch-var(--spacing)*4,0px)] top-12 w-[25rch] text-sm text-foreground-disabled
+        @apply fixed right-[max((100%-85rch)/2-25rch-var(--spacing)*4,0px)] top-12 w-[25rch] text-sm text-foreground-disabled;
+        @variant should-hide-navbars {
+            @apply hidden
+        }
     }
     &.site-nav {
-        @apply fixed right-[max(50%+85rch/2+var(--spacing)*4,25rch)] top-12 w-[25rch] text-sm text-foreground-disabled
+        @apply fixed right-[max(50%+85rch/2+var(--spacing)*4,25rch)] top-12 w-[25rch] text-sm text-foreground-disabled;
+        @variant should-hide-navbars {
+            @apply hidden
+        }
     }
 
     li li {
@@ -215,14 +221,10 @@ nav {
             @apply w-full h-0 border-t border-page-foreground block my-2
         }
     }
-
-    @variant should-hide-navbars {
-        @apply hidden
-    }
 }
 
 #navbars-toggle {
-    @variant space-for-navbars {
+    @variant not-should-hide-navbars {
         @apply hidden
     }
     @variant should-hide-navbars {
@@ -248,8 +250,13 @@ nav {
                     @apply pb-0
                 }
             }
+            * + ul, * + ol {
+                &:not(.on-this-page > &) {
+                    @apply pt-1.5
+                }
+            }
             h2::after {
-                @apply mb-2 mt-3.5
+                @apply mb-1.5 mt-3
             }
         }
     }

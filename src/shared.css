@@ -246,9 +246,3 @@
         @slot;
     }
 }
-
-@custom-variant space-for-navbars {
-    @media (width >= calc(85rch + 1rem + 2*25rch)) { /* uses 1rem not --spacing * 4 since variables and media queries don't play nice */
-        @slot;
-    }
-}

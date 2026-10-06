@@ -64,7 +64,6 @@ module UnifiedDocsTheme
             is_this_jdoc = false
             if navpage["page"]
                 page = all_pages.find() do |page|
-                    puts page.relative_path
                     page.relative_path == navpage["page"]
                 end
                 if page
@@ -150,6 +149,10 @@ Jekyll::Hooks.register :site, :post_write do |site|
             text = text.gsub(/"[^"]*resource-files\/stylesheet.css"/, '"' + Jekyll::URL.new(
                 :template => "/assets/css/javadoc.css"
             ).to_s + '"')
+
+            text = text.gsub(/(<head>)/, '\1<script type="text/javascript" src="' + Jekyll::URL.new(
+                :template => "/assets/js/javadoc.js"
+            ).to_s + '"></script>')
             
             match = text.match(/(id="navbar-top-firstrow"[^>]*>)/)
             if match

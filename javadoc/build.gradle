@@ -5,6 +5,7 @@ plugins {
 javadoc {
     options {
         stylesheetFile = file("stylesheet.css")
+        addFileOption("-add-script", file("../src/javadoc.js"))
         addStringOption("-since", "1.0.1,1.0.2")
     }
 }
