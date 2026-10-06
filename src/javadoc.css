@@ -396,7 +396,7 @@ p:has(+ #page-search-link) {
     }
     .table-tabs {
         .table-tab, .page-search-header, .active-table-tab {
-            @apply py-1 px-2
+            @apply py-1 px-2 text-nowrap
         }
         .table-tab, .page-search-header:not(:only-child) {
             @apply text-foreground-disabled border-b-3 border-page-background

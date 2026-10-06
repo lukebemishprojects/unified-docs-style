@@ -128,10 +128,17 @@ main {
                     :has(pre), pre, :has(table), table {
                         @apply mb-0
                     }
-                    :has(table), table, &:is(table) {
-                        @apply w-[calc(100%+(--spacing(4)))]
-                    }
                     @apply -mb-2
+                }
+            }
+
+            &:has(> table:nth-child(2):last-child) {
+                /* Since it has _just_ a table, we make the table take the fully width */
+                > table {
+                    @apply w-[calc(100%)] m-0 outline-0 table
+                }
+                &::details-content {
+                    @apply overflow-x-auto p-0 border-0;
                 }
             }
         }

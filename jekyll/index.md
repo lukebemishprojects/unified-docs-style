@@ -114,3 +114,10 @@ Text here
 | Entry 1     | Entry 3     |
 | Entry 2     | Entry 4     |
 {% enddetails %}
+
+{% details With a wide table %}
+| Column A    | Column B    | Column C    | Column D    | Column E    |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| Entry 1     | Entry 2     | Entry 3     | Entry 4     | Entry 5     |
+| Entry 6     | Entry 7     | Entry 8     | Entry 9     | Entry 10    |
+{% enddetails %}
