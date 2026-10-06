@@ -1,0 +1,28 @@
+{%- for navpage in include.nav_pages -%}
+{%- assign _1_page_url = navpage.permalink -%}
+{%- assign _1_page_title = navpage.title -%}
+{%- if navpage.page -%}
+    {%- assign _1_hyperpage = all_pages | where: "path", navpage.page | first -%}
+    {%- if _1_hyperpage -%}
+        {%- assign _1_page_url = _1_hyperpage.url -%}
+        {%- if _1_page_title == null -%}
+        {%- assign _1_page_title = _1_hyperpage.title -%}
+        {%- endif -%}
+    {%- endif -%}
+{%- elsif navpage.javadoc -%}
+    {%- for javadoc in site.unified-docs-theme.javadoc | default: [] -%}
+        {%- if javadoc[0] == navpage.javadoc -%}
+            {%- assign _1_page_url = "/javadoc/" | append: javadoc[0] -%}
+            {%- if _1_page_title == null -%}
+            {%- assign _1_page_title = javadoc[1].title -%}
+            {%- endif -%}
+        {%- endif -%}
+    {%- endfor -%}
+{%- endif -%}
+{%- if _1_page_title %}
+{%- if _1_page_url == page.url -%}T{%- endif -%}
+{%- if navpage.children and navpage.children.size > 0 -%}
+    {%- include navbar/contains_current.html nav_pages=navpage.children -%}
+{%- endif -%}
+{%- endif -%}
+{%- endfor -%}

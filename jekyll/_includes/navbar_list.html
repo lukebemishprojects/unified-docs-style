@@ -72,6 +72,12 @@
         {%- endif -%}
         {%- if page_title %}
         <li>
+
+        {%- if navpage.children and navpage.children.size > 0 and navpage.dropdown -%}
+        {%- capture contains_current_page -%}{% include navbar/contains_current.html nav_pages=navpage.children %}{%- endcapture -%}
+        <details {%- if contains_current_page contains "T" %} open{% endif %}><summary>
+        {%- endif -%}
+
         {%- if page_url -%}
             <a {% if page_url == page.url %}{{ 'class="to-current-page" ' }}{% endif %} href="{{ page_url | relative_url }}">{% if page_count == 1 and page_url == page.url %}&larr; {% endif %}{{ page_title | escape }}</a>
         {%- else -%}
@@ -80,7 +86,9 @@
         {%- endif -%}
 
         {%- if navpage.children and navpage.children.size > 0 -%}
+            {%- if navpage.dropdown -%}</summary>{%- endif -%}
             {%- include navbar_list.html nav_pages=navpage.children -%}
+            {%- if navpage.dropdown -%}</details>{%- endif -%}
         {%- endif -%}
         </li>
         {%- endfor %}

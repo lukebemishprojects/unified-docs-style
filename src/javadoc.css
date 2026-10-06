@@ -25,6 +25,20 @@ nav {
             .nav-list {
                 @apply pl-4
             }
+
+            details summary {
+                &::marker {
+                    content: "";
+                    @apply hidden
+                }
+                &::after {
+                    @apply icon-chevron-right inline-icon mt-[calc((1lh-1.5cap)/2)] ml-auto mr-0
+                }
+                @apply flex flex-row
+            }
+            details[open] summary::after {
+                @apply icon-chevron-down
+            }
         }
         .sub-nav {
             .sub-nav-list {

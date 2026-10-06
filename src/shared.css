@@ -76,7 +76,6 @@
     clip-path: shape(from 48.594% 20.469%,line by 7.813% -7.813%,arc by 30.938% 30.938% of 21.875% 21.875% cw large rotate 0deg,line by -15.625% 15.625%,arc by -30.938% 0% of 21.875% 21.875% cw small rotate 0deg,arc by 0.112% -6.513% of 4.694% 4.694% cw small rotate 0deg,arc by 6.513% -0.112% of 4.694% 4.694% cw small rotate 0deg,arc by 17.688% 0% of 12.488% 12.488% ccw small rotate 0deg,line by 15.625% -15.625%,arc by -17.688% -17.688% of 12.512% 12.512% ccw small rotate 0deg,line by -7.813% 7.813%,arc by -6.513% -0.112% of 4.694% 4.694% cw small rotate 0deg,arc by -0.112% -6.513% of 4.694% 4.694% cw small rotate 0deg,close,move by -29.313% 60.25%,arc by 17.688% 0% of 12.488% 12.488% ccw small rotate 0deg,line by 7.813% -7.813%,arc by 6.513% 0.112% of 4.694% 4.694% cw small rotate 0deg,arc by 0.112% 6.513% of 4.694% 4.694% cw small rotate 0deg,line by -7.813% 7.813%,arc by -30.938% -30.938% of 21.875% 21.875% cw large rotate 0deg,line by 15.625% -15.625%,arc by 30.938% 0% of 21.875% 21.875% cw small rotate 0deg,arc by -0.112% 6.513% of 4.694% 4.694% cw small rotate 0deg,arc by -6.513% 0.112% of 4.694% 4.694% cw small rotate 0deg,arc by -17.688% 0% of 12.488% 12.488% ccw small rotate 0deg,line by -15.625% 15.625%,arc by 0% 17.688% of 12.488% 12.488% ccw small rotate 0deg,close);
 }
 
-
 @utility icon-x {
     @apply icon;
     clip-path: shape(from 23.25% 23.25%,arc by 6.625% 0% of 4.688% 4.688% cw small rotate 0deg,line to 50% 43.375%,line by 20.125% -20.125%,arc by 7.969% 2.038% of 4.681% 4.681% cw small rotate 0deg,arc by -1.344% 4.588% of 4.681% 4.681% cw small rotate 0deg,line to 56.625% 50%,line by 20.125% 20.125%,arc by -2.038% 7.969% of 4.681% 4.681% cw small rotate 0deg,arc by -4.588% -1.344% of 4.681% 4.681% cw small rotate 0deg,line to 50% 56.625%,line by -20.125% 20.125%,arc by -6.513% -0.112% of 4.694% 4.694% cw small rotate 0deg,arc by -0.112% -6.513% of 4.694% 4.694% cw small rotate 0deg,line to 43.375% 50%,line to 23.25% 29.875%,arc by 0% -6.625% of 4.688% 4.688% cw small rotate 0deg,close);
@@ -85,6 +84,16 @@
 @utility icon-copy {
     @apply icon;
     clip-path: shape(from 0% 42.188%,curve to 10.938% 31.25% with 0% 36.15%/4.9% 31.25%,hline by 9.375%,arc by 0% 9.375% of 4.688% 4.688% cw small rotate 0deg,hline by -9.375%,arc by -1.563% 1.563% of 1.563% 1.563% ccw small rotate 0deg,vline by 46.875%,curve by 1.563% 1.563% with 0% 0.863%/0.7% 1.563%,hline by 46.875%,arc by 1.563% -1.563% of 1.563% 1.563% ccw small rotate 0deg,vline by -9.375%,arc by 9.375% 0% of 4.688% 4.688% cw small rotate 0deg,vline by 9.375%,arc to 57.813% 100% of 10.938% 10.938% cw small rotate 0deg,hline by -46.875%,arc to 0% 89.063% of 10.938% 10.938% cw small rotate 0deg,close,move to 31.25% 10.938%,curve to 42.188% 0% with 31.25% 4.9%/36.15% 0%,hline by 46.875%,curve to 100% 10.938% with 95.1% 0%/100% 4.9%,vline by 46.875%,arc to 89.063% 68.75% of 10.938% 10.938% cw small rotate 0deg,hline by -46.875%,arc to 31.25% 57.813% of 10.938% 10.938% cw small rotate 0deg,close,move by 10.938% -1.563%,arc by -1.563% 1.563% of 1.563% 1.563% ccw small rotate 0deg,vline by 46.875%,curve by 1.563% 1.563% with 0% 0.863%/0.7% 1.563%,hline by 46.875%,arc by 1.563% -1.563% of 1.563% 1.563% ccw small rotate 0deg,vline by -46.875%,arc by -1.563% -1.563% of 1.563% 1.563% ccw small rotate 0deg,close);
+}
+
+@utility icon-chevron-right {
+    @apply icon;
+    clip-path: shape(from 38.875% 20.125%,arc by 6.625% 0% of 4.688% 4.688% cw small rotate 0deg,line by 26.563% 26.563%,arc by 0% 6.625% of 4.688% 4.688% cw small rotate 0deg,line by -26.563% 26.563%,arc by -6.513% -0.112% of 4.694% 4.694% cw small rotate 0deg,arc by -0.112% -6.513% of 4.694% 4.694% cw small rotate 0deg,line to 62.125% 50%,line to 38.875% 26.75%,arc by 0% -6.625% of 4.688% 4.688% cw small rotate 0deg,close);
+}
+
+@utility icon-chevron-down {
+    @apply icon;
+    clip-path: shape(from 79.875% 32.625%,arc by 0% 6.625% of 4.681% 4.681% cw small rotate 0deg,line by -26.563% 26.563%,arc by -6.625% 0% of 4.681% 4.681% cw small rotate 0deg,line to 20.125% 39.25%,arc by 6.625% -6.625% of 4.681% 4.681% cw large rotate 0deg,line to 50% 55.869%,line by 23.25% -23.244%,arc by 6.625% 0% of 4.681% 4.681% cw small rotate 0deg,close);
 }
 
 
@@ -221,5 +230,17 @@
     @apply max-w-[85rch] min-w-[min(100dvw,85rch)] px-4 py-12 mx-auto;
     @media print {
         @apply max-w-full mx-0 w-full
+    }
+}
+
+@custom-variant should-hide-navbars {
+    @media (width < calc(85rch + 1rem + 2*25rch)) { /* uses 1rem not --spacing * 4 since variables and media queries don't play nice */
+        @slot;
+    }
+}
+
+@custom-variant space-for-navbars {
+    @media (width >= calc(85rch + 1rem + 2*25rch)) { /* uses 1rem not --spacing * 4 since variables and media queries don't play nice */
+        @slot;
     }
 }

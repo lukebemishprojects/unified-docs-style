@@ -26,12 +26,20 @@ collections:
 unified-docs-theme:
   nav_pages:
     - page: index.md
+      dropdown: true
       children:
         - title: Unclickable Child
         - page: _category/test.md
     - javadoc: test-library
     - title: Not Clickable
+      dropdown: true
+      children:
+        - title: A
+        - title: B
     - title: Google
+      children:
+        - title: C
+        - title: D
       permalink: https://google.com/
   javadoc:
     test-library:

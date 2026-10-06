@@ -183,26 +183,6 @@ nav {
         a {
             @apply text-foreground-disabled
         }
-        a:active, a:hover, a.to-current-page {
-            @apply text-foreground-link
-        }
-
-        li li {
-            @apply pl-4
-        }
-        h2 {
-            &::after {
-                content: "";
-                @apply w-full h-0 border-t border-page-foreground block my-2
-            }
-        }
-        @apply fixed right-[max((100%-85rch)/2-30ch-1rem,0px)] top-12 w-[30ch] text-sm text-foreground-disabled
-    }
-
-    &.site-nav {
-        a {
-            @apply text-foreground-disabled
-        }
         a:active, a:hover, a.to-current-target {
             @apply text-foreground-link
         }
@@ -216,6 +196,44 @@ nav {
                 @apply w-full h-0 border-t border-page-foreground block my-2
             }
         }
-        @apply fixed left-[max((100%-85rch)/2-30ch-1rem,0px)] top-12 w-[30ch] text-sm text-foreground-disabled
+        @apply fixed right-[max((100%-85rch)/2-25rch-var(--spacing)*4,0px)] top-12 w-[25rch] text-sm text-foreground-disabled
+    }
+
+    &.site-nav {
+        a {
+            @apply text-foreground-disabled
+        }
+        a:active, a:hover, a.to-current-page {
+            @apply text-foreground-link
+        }
+
+        li details summary {
+            &::marker {
+                content: "";
+                @apply hidden
+            }
+            &::after {
+                @apply icon-chevron-right inline-icon mt-[calc((1lh-1.5cap)/2)] ml-auto mr-0
+            }
+            @apply flex flex-row
+        }
+        li details[open] summary::after {
+            @apply icon-chevron-down
+        }
+
+        li li {
+            @apply pl-4
+        }
+        h2 {
+            &::after {
+                content: "";
+                @apply w-full h-0 border-t border-page-foreground block my-2
+            }
+        }
+        @apply fixed right-[max(50%+85rch/2+var(--spacing)*4,25rch)] top-12 w-[25rch] text-sm text-foreground-disabled
+    }
+
+    @variant should-hide-navbars {
+        @apply hidden
     }
 }

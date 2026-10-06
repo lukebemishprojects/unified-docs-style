@@ -91,6 +91,10 @@ module UnifiedDocsTheme
 
             if entry_title
                 target = ""
+                haschildren = navpage["children"] and navpage["children"].length > 0
+                if haschildren and navpage["dropdown"]
+                    target << "<details><summary>"
+                end
                 if entry_url
                     target << '<a href='+entry_url.dump+'>'
                 end
@@ -98,14 +102,20 @@ module UnifiedDocsTheme
                 if entry_url
                     target << "</a>"
                 end
+                if (haschildren or is_this_jdoc) and navpage["dropdown"]
+                    target << "</summary>"
+                end
 
                 if is_this_jdoc
                     target << jdoc_contents
                 end
 
-                if navpage["children"] and navpage["children"].length > 0
+                if haschildren
                     andentries = processNavEntries(site, navpage["children"], this_jdoc, jdoc_contents)
                     target << '<ul class="nav-list"><li>' + andentries.join("</li><li>") + "</li></ul>"
+                    if navpage["dropdown"]
+                        target << "</details>"
+                    end
                 end
 
                 entries << target
@@ -127,7 +137,7 @@ Jekyll::Hooks.register :site, :post_write do |site|
         end + javadoc_data.map() do |id, data|
             {"javadoc" => id}
         end
-        if not nav_paths.include?({"javadoc" => id})
+        if not nav_paths.any? { |page| page["javadoc"] == id }
             nav_paths << {"javadoc" => id}
         end
         
