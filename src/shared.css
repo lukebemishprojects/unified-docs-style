@@ -96,6 +96,11 @@
     clip-path: shape(from 79.875% 32.625%,arc by 0% 6.625% of 4.681% 4.681% cw small rotate 0deg,line by -26.563% 26.563%,arc by -6.625% 0% of 4.681% 4.681% cw small rotate 0deg,line to 20.125% 39.25%,arc by 6.625% -6.625% of 4.681% 4.681% cw large rotate 0deg,line to 50% 55.869%,line by 23.25% -23.244%,arc by 6.625% 0% of 4.681% 4.681% cw small rotate 0deg,close);
 }
 
+@utility icon-hamburger {
+    @apply icon;
+    clip-path: shape(from 6.25% 17.188%,arc to 10.938% 12.5% of 4.688% 4.688% cw small rotate 0deg,hline by 78.125%,arc by 0% 9.375% of 4.688% 4.688% cw small rotate 0deg,hline to 10.938%,arc to 6.25% 17.188% of 4.688% 4.688% cw small rotate 0deg,close,move by 0% 31.25%,arc to 10.938% 43.75% of 4.688% 4.688% cw small rotate 0deg,hline by 78.125%,arc by 0% 9.375% of 4.688% 4.688% cw small rotate 0deg,hline to 10.938%,arc to 6.25% 48.438% of 4.688% 4.688% cw small rotate 0deg,close,move to 10.938% 75%,hline by 78.125%,arc by 0% 9.375% of 4.688% 4.688% cw small rotate 0deg,hline to 10.938%,arc by 0% -9.375% of 4.688% 4.688% cw small rotate 0deg,close);
+}
+
 
 @utility shared-highlight {
     print-color-adjust: exact;
@@ -230,6 +235,9 @@
     @apply max-w-[85rch] min-w-[min(100dvw,85rch)] px-4 py-12 mx-auto;
     @media print {
         @apply max-w-full mx-0 w-full
+    }
+    @variant should-hide-navbars {
+        @apply mt-20 pt-4 overflow-y-auto h-[calc(100dvh-var(--spacing)*20)]
     }
 }
 

@@ -26,5 +26,8 @@ const correctLinkTargets = (currentUrl) => {
 
 correctLinkTargets(window.location.href);
 document.querySelectorAll('a').forEach(link => {
-    link.onclick = () => correctLinkTargets(link.href);
+    link.onclick = () => {
+        correctLinkTargets(link.href);
+        document.getElementById('navbars-toggle').checked = false;
+    };
 });

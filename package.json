@@ -2,7 +2,7 @@
   "scripts": {
     "build": "postcss src/javadoc.css -o dist/javadoc.css && cp dist/javadoc.css jekyll/assets/css/javadoc.css && postcss src/jekyll.css -o jekyll/_sass/unified.css",
     "dev-javadoc": "postcss src/javadoc.css -o dist/javadoc.css --watch",
-    "dev-jekyll": "postcss src/jekyll.css -o jekyll/_sass/unified.css --watch"
+    "dev-jekyll": "postcss src/jekyll.css -o jekyll/_sass/unified.css --watch & postcss src/javadoc.css -o jekyll/assets/css/javadoc.css --watch"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.3.3",

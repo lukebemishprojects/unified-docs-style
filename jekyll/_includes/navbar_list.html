@@ -47,7 +47,10 @@
     {%- endfor -%}
 {%- endif -%}
 {%- unless include.nav_pages == empty or (page_count == 1 and current_in_navbar ) %}
-    {%- if include.wrapped | default: false -%}<header><nav class="site-nav">{%- endif -%}<ol>
+    {%- if include.wrapped | default: false -%}
+        <header><input type="checkbox" id="navbars-toggle"><nav class="site-nav">
+    {%- endif -%}
+    <ol>
     {%- if include.nav_pages -%}
         {%- for navpage in include.nav_pages -%}
         {%- assign page_url = navpage.permalink -%}

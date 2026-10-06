@@ -12,7 +12,9 @@ nav {
             @apply hidden
         }
         .nav-menu-button {
-            @apply hidden
+            @variant space-for-navbars {
+                @apply hidden
+            }
         }
         .nav-bar-cell1-rev, .nav-list > li a:hover {
             @apply text-foreground-link

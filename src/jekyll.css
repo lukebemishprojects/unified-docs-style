@@ -180,60 +180,78 @@ nav {
         @apply hidden
     }
     &.on-this-page {
-        a {
-            @apply text-foreground-disabled
-        }
-        a:active, a:hover, a.to-current-target {
-            @apply text-foreground-link
-        }
-
-        li li {
-            @apply pl-4
-        }
-        h2 {
-            &::after {
-                content: "";
-                @apply w-full h-0 border-t border-page-foreground block my-2
-            }
-        }
         @apply fixed right-[max((100%-85rch)/2-25rch-var(--spacing)*4,0px)] top-12 w-[25rch] text-sm text-foreground-disabled
     }
-
     &.site-nav {
-        a {
-            @apply text-foreground-disabled
-        }
-        a:active, a:hover, a.to-current-page {
-            @apply text-foreground-link
-        }
-
-        li details summary {
-            &::marker {
-                content: "";
-                @apply hidden
-            }
-            &::after {
-                @apply icon-chevron-right inline-icon mt-[calc((1lh-1.5cap)/2)] ml-auto mr-0
-            }
-            @apply flex flex-row
-        }
-        li details[open] summary::after {
-            @apply icon-chevron-down
-        }
-
-        li li {
-            @apply pl-4
-        }
-        h2 {
-            &::after {
-                content: "";
-                @apply w-full h-0 border-t border-page-foreground block my-2
-            }
-        }
         @apply fixed right-[max(50%+85rch/2+var(--spacing)*4,25rch)] top-12 w-[25rch] text-sm text-foreground-disabled
+    }
+
+    li li {
+        @apply pl-4
+    }
+    a {
+        @apply text-foreground-disabled
+    }
+    a:active, a:hover, a.to-current-page, a.to-current-target {
+        @apply text-foreground-link
+    }
+
+    li details summary {
+        &::marker {
+            content: "";
+            @apply hidden
+        }
+        &::after {
+            @apply icon-chevron-right inline-icon mt-[calc((1lh-1.5cap)/2)] ml-auto mr-0
+        }
+        @apply flex flex-row
+    }
+    li details[open] summary::after {
+        @apply icon-chevron-down
+    }
+    h2 {
+        &::after {
+            content: "";
+            @apply w-full h-0 border-t border-page-foreground block my-2
+        }
     }
 
     @variant should-hide-navbars {
         @apply hidden
     }
 }
+
+#navbars-toggle {
+    @variant space-for-navbars {
+        @apply hidden
+    }
+    @variant should-hide-navbars {
+        &::before {
+            @apply icon-hamburger w-12 h-12
+        }
+        @apply appearance-none bg-table-border w-dvw h-20 fixed top-0 left-0 p-4 z-10
+    }
+}
+
+@variant should-hide-navbars {
+    :is(#navbars-toggle:checked, :has(#navbars-toggle:checked)) ~ * {
+        &:is(nav), nav {
+            &.site-nav {
+                @apply block fixed bg-page-background left-0 px-4 top-20 py-4 h-[calc(50dvh)] w-dvw overflow-y-auto z-10 border-b border-table-border
+            }
+            &.on-this-page {
+                @apply block fixed bg-table-odd left-0 px-4 top-[calc(50dvh+--spacing(20))] py-4 h-[calc(50dvh-var(--spacing)*20)] w-dvw overflow-y-auto z-20
+            }
+            li {
+                @apply py-1.5;
+                &:last-child {
+                    @apply pb-0
+                }
+            }
+            h2::after {
+                @apply mb-2 mt-3.5
+            }
+        }
+    }
+}
+
