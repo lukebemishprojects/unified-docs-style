@@ -183,7 +183,7 @@
     thead tr, tr:nth-child(even) {
         @apply bg-table-odd
     }
-    @apply -mx-2 max-w-[calc(100%+(--spacing(4)))]
+    @apply -mx-2 max-w-[calc(100%+(--spacing(4)))] overflow-x-auto block;
 }
 
 @utility shared-link {

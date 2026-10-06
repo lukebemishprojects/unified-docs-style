@@ -18,10 +18,10 @@ And yet more content.
 <blockquote class="random-class-goes-here" id="random-id-goes-here">And the block quote processor doesn't break this</blockquote>
 <blockquote id="random-id-goes-here">Or this</blockquote>
 
-| Column A    | Column B    |
-| ----------- | ----------- |
-| Entry 1     | Entry 3     |
-| Entry 2     | Entry 4     |
+| Column A    | Column B    | Column C    | Column D    | Column E    |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| Entry 1     | Entry 2     | Entry 3     | Entry 4     | Entry 5     |
+| Entry 6     | Entry 7     | Entry 8     | Entry 9     | Entry 10    |
 
 Text can be **bold** or *italic* or ~~strikethrough~~ or `code`.
 

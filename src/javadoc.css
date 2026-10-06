@@ -292,7 +292,7 @@ p:has(+ #page-search-link) {
         > * {
             @apply py-1 px-2 outline outline-table-border
         }
-        @apply -mx-2 w-[calc(100%+(--spacing(4)))]
+        @apply -mx-2 w-[calc(100%+(--spacing(4)))] overflow-x-auto border border-table-border
     }
     table {
         @apply shared-table
@@ -339,7 +339,7 @@ p:has(+ #page-search-link) {
         .active-table-tab, .page-search-header:only-child {
             @apply bg-table-odd border-b-3 border-table-border
         }
-        @apply flex flex-row gap-2 -mx-2 max-w-[calc(100%+(--spacing(4)))] w-[calc(100%+(--spacing(4)))] mt-2
+        @apply flex flex-row gap-2 -mx-2 max-w-[calc(100%+(--spacing(4)))] w-[calc(100%+(--spacing(4)))] mt-2 overflow-auto
     }
 
     .inherited-list {
