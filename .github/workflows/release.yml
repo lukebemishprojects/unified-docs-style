@@ -16,7 +16,7 @@ jobs:
         cache: 'npm'
     - uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.6.x
+        ruby-version: 4.0.x
     - run: npm ci
     - run: npm run build
     - name: Publish to GPR

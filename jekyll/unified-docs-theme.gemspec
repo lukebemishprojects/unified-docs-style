@@ -20,6 +20,8 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "jekyll-seo-tag", "~> 2.1"
 
   spec.add_development_dependency "bundler"
+
+  spec.required_ruby_version = ">= 3.3.0"
   
   spec.metadata = { "github_repo" => "ssh://github.com/lukebemishprojects/unified-docs-style" }
 end
