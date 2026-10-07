@@ -6,15 +6,20 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Luke Bemish"]
   spec.email         = ["lukebemish@lukebemish.dev"]
 
-  spec.summary       = "TODO: Write a short summary, because Rubygems requires one."
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "Jekyll theme with unified styling between javadoc and long-form docs."
+  spec.homepage      = "https://github.com/lukebemishprojects/unified-docs-style"
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(assets|_data|_layouts|_includes|_sass|LICENSE|README|_config\.yml)!i) }
+  spec.files         = `git ls-files -z`.split("\x0")
+    .select { |f| f.match(%r!^(_data|_layouts|_includes|LICENSE|README|_config\.yml)!i) } +
+    `find assets -type f -print0`.split("\x0") +
+    `find _sass -type f -print0`.split("\x0")
 
   spec.add_runtime_dependency "jekyll", "~> 4.4"
   spec.add_runtime_dependency "jekyll-feed", "~> 0.9"
   spec.add_runtime_dependency "jekyll-seo-tag", "~> 2.1"
 
   spec.add_development_dependency "bundler"
+  
+  spec.metadata = { "github_repo" => "ssh://github.com/lukebemishprojects/unified-docs-style" }
 end
