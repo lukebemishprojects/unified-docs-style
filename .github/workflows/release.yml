@@ -9,6 +9,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+    env:
+      BUNDLE_GEMFILE: ${{ github.workspace }}/jekyll/Gemfile
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -16,7 +18,8 @@ jobs:
         cache: 'npm'
     - uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 4.0.x
+        ruby-version: '4.0'
+        bundler-cache: true
     - run: npm ci
     - run: npm run build
     - name: Publish to GPR
